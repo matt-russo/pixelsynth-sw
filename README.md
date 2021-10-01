@@ -1,5 +1,5 @@
 # pixelsynth-sw
-Olivia Jack's PixelSynth, modified for Sonification World Chat's "Learn" Working Group
+Olivia Jack's [PixelSynth](https://ojack.xyz/PIXELSYNTH/), modified for Sonification World Chat's "Learn" Working Group
 
 
 ## TO DO
