@@ -23,7 +23,7 @@ Olivia Jack's PixelSynth, modified for Sonification World Chat's "Learn" Working
 
 
 ### Completed modifications
-* default play momde is offset
+* default play mode is off
 * removed draw layer, control and listeners
 * Image Control: removed repetitions, spacing, offset, rotation, clearbackground
 * maintain colour images
@@ -34,5 +34,5 @@ Olivia Jack's PixelSynth, modified for Sonification World Chat's "Learn" Working
 
 ### Other
 * hearing some crackling artifact:
- * reducing image resolution didn't help
- * no change with p5 instead of native oscillators
+  * reducing image resolution didn't help
+  * no change with p5 instead of native oscillators
