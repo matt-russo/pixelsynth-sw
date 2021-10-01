@@ -48,21 +48,21 @@ class Synthesizer {
   		}
   		//console.log(this.oscillators);, 0
 	}
-	initP5Oscillators(frequencies){
-		//console.log(frequencies);
-  		for(var i = 0; i < frequencies.length; i++){
-    		var osc = new p5.Oscillator('sine'); // set frequency and type
-
-				osc.amp(0);
-				var oscFreq=frequencies[frequencies.length-1-i];
-				osc.freq(oscFreq);
-    		//console.log(osc);
-    		osc.start(this.ctx.currentTime);
-				var ampComp = Math.pow(frequencies[0]/oscFreq,1.0); //0.33 is standard correction of ELC but highs are still harsh
-    		this.p5oscillators[i] = {osc: osc,  val: 0, ampComp: ampComp};
-  		}
-  		//console.log(this.oscillators);, 0
-	}
+	// initP5Oscillators(frequencies){
+	// 	//console.log(frequencies);
+  // 		for(var i = 0; i < frequencies.length; i++){
+  //   		var osc = new p5.Oscillator('sine'); // set frequency and type
+	//
+	// 			osc.amp(0);
+	// 			var oscFreq=frequencies[frequencies.length-1-i];
+	// 			osc.freq(oscFreq);
+  //   		//console.log(osc);
+  //   		osc.start(this.ctx.currentTime);
+	// 			var ampComp = Math.pow(frequencies[0]/oscFreq,1.0); //0.33 is standard correction of ELC but highs are still harsh
+  //   		this.p5oscillators[i] = {osc: osc,  val: 0, ampComp: ampComp};
+  // 		}
+  // 		//console.log(this.oscillators);, 0
+	// }
 	updateGains(gainVals){
 		for(var i = 0; i < gainVals.length; i++){
 			if(this.oscillators[i].val!=gainVals[i]){
@@ -75,18 +75,18 @@ class Synthesizer {
 		}
 	}
 
-	updateP5Gains(gainVals){
-		for(var i = 0; i < gainVals.length; i++){
-			if(this.p5oscillators[i].val!=gainVals[i]){
-					var ampComp = this.p5oscillators[i].ampComp;
-      		this.p5oscillators[i].val=gainVals[i];
-					this.p5oscillators[i].osc.amp(ampComp*gainVals[i]);
-					//this.oscillators[i].gain.gain.value = gainVals[i]*ampComp;
-      		//this.p5oscillators[i].gain.gain.cancelScheduledValues(this.ctx.currentTime);
-        	//this.p5oscillators[i].gain.gain.linearRampToValueAtTime(gainVals[i]*ampComp, this.ctx.currentTime+0.1);
-      	}
-		}
-	}
+	// updateP5Gains(gainVals){
+	// 	for(var i = 0; i < gainVals.length; i++){
+	// 		if(this.p5oscillators[i].val!=gainVals[i]){
+	// 				var ampComp = this.p5oscillators[i].ampComp;
+  //     		this.p5oscillators[i].val=gainVals[i];
+	// 				this.p5oscillators[i].osc.amp(ampComp*gainVals[i]);
+	// 				//this.oscillators[i].gain.gain.value = gainVals[i]*ampComp;
+  //     		//this.p5oscillators[i].gain.gain.cancelScheduledValues(this.ctx.currentTime);
+  //       	//this.p5oscillators[i].gain.gain.linearRampToValueAtTime(gainVals[i]*ampComp, this.ctx.currentTime+0.1);
+  //     	}
+	// 	}
+	// }
 
 
 	endSynth(){
@@ -96,13 +96,13 @@ class Synthesizer {
 			this.oscillators[i].osc.stop(this.ctx.currentTime+0.8);
 		}
 	}
-	endP5Synth(){
-		//console.log(this.oscillators);
-		for(var i = 0; i < this.oscillators.length; i++){
-			//this.p5oscillators[i].osc.amp(0);
-			this.p5oscillators[i].osc.stop(this.ctx.currentTime+0.8);
-		}
-	}
+	// endP5Synth(){
+	// 	//console.log(this.oscillators);
+	// 	for(var i = 0; i < this.oscillators.length; i++){
+	// 		//this.p5oscillators[i].osc.amp(0);
+	// 		this.p5oscillators[i].osc.stop(this.ctx.currentTime+0.8);
+	// 	}
+	// }
 
 }
 
