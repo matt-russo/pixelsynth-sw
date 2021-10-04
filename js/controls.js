@@ -5,7 +5,6 @@ var images=[
 {name: "skyline", value: "skyline.png"},
 {name: "stairway", value: "stairway.png"},
 {name: "night sky", value: "nightsky.jpg"},
-{name: "skyline", value: "skyline.png"},
 {name: "moire", value: "moire2.jpg"},
 {name: "swoosh", value: "swoosh.jpeg"},
 { name: "contour", value: "contour.jpg"},
