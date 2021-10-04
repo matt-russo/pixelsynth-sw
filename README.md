@@ -13,6 +13,7 @@ Olivia Jack's [PixelSynth](https://ojack.xyz/PIXELSYNTH/), modified for Sonifica
 * quantize rotation? or remove it?
 * fix width of image drop down (long image names pushed it over edge)
 * try vertical downsizing to number of scale steps (or averaging) so data from all rows is used?
+* very high freq seems too loud on nNotes>0, is this a bug?
 
 ### Accessibility
 * revisit keyboard commands

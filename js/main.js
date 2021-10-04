@@ -51,7 +51,8 @@ var settings = {
     type: 'majorPentatonic'
   },
 
-  reverb: 0.25
+  reverb: 0.25,
+  maxGain: 0.75
 };
 
 var synthObj = {};
@@ -248,7 +249,7 @@ function nextStep(){
     var val;
 
     //using greyscale brightness of color data
-    val = (imageCanvas.imageData[off]+imageCanvas.imageData[off+1]+imageCanvas.imageData[off+2])/(255*3);
+    val = settings.maxGain*(imageCanvas.imageData[off]+imageCanvas.imageData[off+1]+imageCanvas.imageData[off+2])/(255*3);
     //using one element of greyscale data + draw canvas
     //val = (imageCanvas.imageData[off]+drawCanvas.imageData[off]*(drawCanvas.imageData[off+3]/255))/255;
     //val = (imageCanvas.imageData[off])/255;
