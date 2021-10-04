@@ -16,9 +16,10 @@ Olivia Jack's [PixelSynth](https://ojack.xyz/PIXELSYNTH/), modified for Sonifica
 
 
 ### Accessibility
-* revisit keyboard commands
+* set up keyboard commands (spacebar is currently set to play/pause)
 * check/add alt text
 * alternative to dials? (or just increment with keyboard?)
+* audio marker for edges of image?
 * research other requirements
 
 
@@ -27,7 +28,7 @@ Olivia Jack's [PixelSynth](https://ojack.xyz/PIXELSYNTH/), modified for Sonifica
 
 
 ### Completed modifications
-* default play mode is off
+* default play mode is now set to 'off'
 * removed draw layer, control and event handlers
 * Image Control: removed repetitions, spacing, offset, clearbackground
 * maintain colour images (changed toGreyscale to getImageData) (not using colour but could think about a colour mode)
