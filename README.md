@@ -6,14 +6,14 @@ Olivia Jack's [PixelSynth](https://ojack.xyz/PIXELSYNTH/), modified for Sonifica
 
 ### Functionality/Layout
 * move control panel to separate (non-overlay) panel
-* separate SOUND/IMAGE headers so everything is visible
-* fix border issue on bottom right (brightness contrast misalignment, aspect ratio issue?)
-* choose/upload new default images
-* add other scales/voicings (hexatonic, some kind of lydian voicing...)
+* separate SOUND/IMAGE panels so everything is visible
+* fix border issue on bottom right of image (brightness contrast misalignment, aspect ratio issue?)
 * quantize rotation? or remove it?
 * fix width of image drop down (long image names pushed it over edge)
 * try vertical downsizing to number of scale steps (or averaging) so data from all rows is used?
-* very high freq seems too loud on nNotes>0, is this a bug?
+* choose/upload new default images
+* add other scales/voicings (hexatonic, some kind of lydian voicing...)
+
 
 ### Accessibility
 * revisit keyboard commands
@@ -36,9 +36,10 @@ Olivia Jack's [PixelSynth](https://ojack.xyz/PIXELSYNTH/), modified for Sonifica
 * added convolution reverb
 * enlarged and centered indicators on playhead
 
-### Other
+### Other/Bugs
 * hearing some crackling artifact:
   * reducing image resolution didn't help
   * no change with p5 instead of native oscillators
   * maybe using reduced greyscale data would speed things up?
+* very high freq seems too loud on nNotes>60, is this a bug?
 * get custom URL?
