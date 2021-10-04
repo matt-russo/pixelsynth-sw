@@ -148,7 +148,7 @@ function init(){
 
    document.body.appendChild(playheadCanvas);
    controls = new Controls(imageCanvas, drawCanvas, settings, handlePlay, handleStop, regenerateSynth);
-   //setEventHandlers();
+   setEventHandlers();
 
    document.body.onkeydown = function(e){
     if(e.keyCode == 32){

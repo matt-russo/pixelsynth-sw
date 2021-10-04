@@ -1,4 +1,7 @@
 var images=[
+{name: "galactic - xray", value: "galactic_xray.jpg"},
+{name: "galactic - optical", value: "galactic_optical.jpg"},
+{name: "galactic - infrared", value: "galactic_ir.jpg"},
 {name: "skyline", value: "skyline.png"},
 {name: "stairway", value: "stairway.png"},
 {name: "night sky", value: "nightsky.jpg"},
@@ -129,7 +132,7 @@ class Controls {
 	  	container.appendChild(panel);
 
 
-	 	this.addDropdown(images, panel, "select background image: ", "nightsky.jpg", this.selectImage.bind(this));
+	 	this.addDropdown(images, panel, "select background image: ", "galactic_xray.jpg", this.selectImage.bind(this));
 	 	var label = document.createElement("LABEL");
 	 	label.className= "upload-container";
 	 	var span = document.createElement("SPAN");

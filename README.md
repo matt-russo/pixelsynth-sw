@@ -4,17 +4,20 @@ Olivia Jack's [PixelSynth](https://ojack.xyz/PIXELSYNTH/), modified for Sonifica
 
 ## TO DO
 
-### Functionality/Basic Design
-* resize image to window height or width
-* change control panel to separate (non-overlay) panel
-* fix SOUND/IMAGE placement bug on small windows
-* choose/upload default images
-* add hexatonic scales
+### Functionality/Layout
+* move control panel to separate (non-overlay) panel
+* separate SOUND/IMAGE headers so everything is visible
+* fix border issue on bottom right (brightness contrast misalignment, aspect ratio issue?)
+* choose/upload new default images
+* add other scales/voicings (hexatonic, some kind of lydian voicing...)
+* quantize rotation? or remove it?
+* fix width of image drop down (long image names pushed it over edge)
+* try vertical downsizing to number of scale steps (or averaging) so data from all rows is used?
 
 ### Accessibility
-* keyboard commands
-* alt text
-* alternative to dials?
+* revisit keyboard commands
+* check/add alt text
+* alternative to dials? (or just increment with keyboard?)
 * research other requirements
 
 
@@ -24,15 +27,17 @@ Olivia Jack's [PixelSynth](https://ojack.xyz/PIXELSYNTH/), modified for Sonifica
 
 ### Completed modifications
 * default play mode is off
-* removed draw layer, control and listeners
-* Image Control: removed repetitions, spacing, offset, rotation, clearbackground
-* maintain colour images
-* alternate default note choices
+* removed draw layer, control and event handlers
+* Image Control: removed repetitions, spacing, offset, clearbackground
+* maintain colour images (changed toGreyscale to getImageData) (not using colour but could think about a colour mode)
+* alternate default note choices (more limited starting range)
 * amplitude compensation to reduce higher frequencies
-* convolution reverb
-
+* added convolution reverb
+* enlarged and centered indicators on playhead
 
 ### Other
 * hearing some crackling artifact:
   * reducing image resolution didn't help
   * no change with p5 instead of native oscillators
+  * maybe using reduced greyscale data would speed things up?
+* get custom URL?

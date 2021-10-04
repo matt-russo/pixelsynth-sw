@@ -1,7 +1,6 @@
 body {
   padding: 50px;
   font: 26px "Courier New", Courier, monospace;
-
 }
 
 a {
@@ -175,7 +174,7 @@ input[type="file"] {
 }
 .header-button {
 	color: #fff;
-	width: 48.6%; 
+	width: 48.6%;
 	background-color: #f06;
 	display: inline-block;
 	line-height: 30px;
