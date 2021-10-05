@@ -13,15 +13,16 @@ Olivia Jack's [PixelSynth](https://ojack.xyz/PIXELSYNTH/), modified for Sonifica
 * try vertical downsizing to number of scale steps (or averaging) so data from all rows is used?
 * choose/upload new default images
 * add other scales/voicings (hexatonic, some kind of lydian voicing...)
+* change 'background image' to 'select image'
 
 
 ### Accessibility
 * set up keyboard commands (spacebar is currently set to play/pause)
 * check/add alt text
-* alternative to dials? (or just increment with keyboard?)
+* alternative to dials? (can increment with keyboard)
 * audio marker for edges of image?
+* improve colour contrast/font/font size
 * research other requirements
-
 
 ### Aesthetics
 * alternate colour scheme/landing page graphic to distinguish from original
@@ -44,3 +45,4 @@ Olivia Jack's [PixelSynth](https://ojack.xyz/PIXELSYNTH/), modified for Sonifica
   * maybe using reduced greyscale data would speed things up?
 * very high freq seems too loud on nNotes>60, is this a bug?
 * get custom URL?
+* mmobile version
