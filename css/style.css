@@ -102,7 +102,7 @@ select{
 
 .panel{
 	padding: 10px;
-    border-style: solid;
+  border-style: solid;
 	border-width: 3px;
 	border-color: #444;
 	display: block;

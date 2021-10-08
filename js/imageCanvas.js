@@ -19,7 +19,7 @@ class ImageCanvas {
 	  this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 	  //this.ctx = ctx;
 	  document.body.appendChild(this.canvas);
-	   this.loadImage("./images/galactic_xray.jpg");
+	  this.loadImage("./images/galactic_xray.jpg");
 	}
 
 
@@ -102,42 +102,42 @@ class ImageCanvas {
 	        }
 	}
 
-	drawRepetitions(){
-		var rotation = this.settings.rotation*Math.PI*2;
-		var width = this.canvas.width/(1+this.settings.repetitions.x*5);
-		var height = this.canvas.height/(1+this.settings.repetitions.y*5);
-		//console.log(this.settings.spacing.x);
-		var spacingX = (3*this.settings.spacing.x + 0.5)*width;
-		var spacingY = (3*this.settings.spacing.y + 0.5)*height;
-		var numCols = this.canvas.width/spacingX;
-		var numRows = this.canvas.height/spacingY;
-		 var modCanvas = document.createElement("canvas");
-	   modCanvas.width = width;
-	   modCanvas.height = height;
-	  var modCtx = modCanvas.getContext('2d');
-	  modCtx.translate(width/2, height/2);
-	  modCtx.rotate(rotation);
-	  modCtx.drawImage(this.filterCanvas, -width/2, -height/2, width, height);
-	  this.ctx.fillStyle = "rgb(0, 0, 0)";
-	   this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-	  this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
-	this.ctx.globalCompositeOperation="lighter";
-	  for(var i = 0; i < numCols+1; i++){
-	  	for(var j = 0; j < numRows; j++){
-	  		var xPos = i*spacingX- this.settings.offset.x*spacingX*j;
-	  		var yPos = j*spacingY- this.settings.offset.y*spacingY*i;
-
-	  		if(xPos <= -spacingX) xPos += this.canvas.width;
-	  		if(yPos <= -spacingY) yPos += this.canvas.height;
-	  		//if(xPos > this.canvas.width) xPos -= this.canvas.width;
-	  		this.ctx.drawImage(modCanvas, xPos, yPos, width, height);
-	  	}
-	  }
-	 // this.ctx.drawImage(modCanvas, 0, 0, width, height);
-	   this.data = this.ctx.getImageData(0, 0, this.canvas.width, this.canvas.height);
-	        this.imageData = this.data.data;
-	        //this.originalData = this.data.data.slice(0);
-	}
+	// drawRepetitions(){
+	// 	var rotation = this.settings.rotation*Math.PI*2;
+	// 	var width = this.canvas.width/(1+this.settings.repetitions.x*5);
+	// 	var height = this.canvas.height/(1+this.settings.repetitions.y*5);
+	// 	//console.log(this.settings.spacing.x);
+	// 	var spacingX = (3*this.settings.spacing.x + 0.5)*width;
+	// 	var spacingY = (3*this.settings.spacing.y + 0.5)*height;
+	// 	var numCols = this.canvas.width/spacingX;
+	// 	var numRows = this.canvas.height/spacingY;
+	// 	 var modCanvas = document.createElement("canvas");
+	//    modCanvas.width = width;
+	//    modCanvas.height = height;
+	//   var modCtx = modCanvas.getContext('2d');
+	//   modCtx.translate(width/2, height/2);
+	//   modCtx.rotate(rotation);
+	//   modCtx.drawImage(this.filterCanvas, -width/2, -height/2, width, height);
+	//   this.ctx.fillStyle = "rgb(0, 0, 0)";
+	//    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+	//   this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+	// this.ctx.globalCompositeOperation="lighter";
+	//   for(var i = 0; i < numCols+1; i++){
+	//   	for(var j = 0; j < numRows; j++){
+	//   		var xPos = i*spacingX- this.settings.offset.x*spacingX*j;
+	//   		var yPos = j*spacingY- this.settings.offset.y*spacingY*i;
+	//
+	//   		if(xPos <= -spacingX) xPos += this.canvas.width;
+	//   		if(yPos <= -spacingY) yPos += this.canvas.height;
+	//   		//if(xPos > this.canvas.width) xPos -= this.canvas.width;
+	//   		this.ctx.drawImage(modCanvas, xPos, yPos, width, height);
+	//   	}
+	//   }
+	//  // this.ctx.drawImage(modCanvas, 0, 0, width, height);
+	//    this.data = this.ctx.getImageData(0, 0, this.canvas.width, this.canvas.height);
+	//         this.imageData = this.data.data;
+	//         //this.originalData = this.data.data.slice(0);
+	// }
 
 	invert(){
 	 // imageData ;
@@ -160,6 +160,28 @@ class ImageCanvas {
 	  this.calculatePixels();
 	}
 
+	increaseContrast() {
+		this.settings.contrast += 0.1;
+		this.settings.contrast = Math.min(1, this.settings.contrast);
+		this.calculatePixels();
+	}
+	decreaseContrast() {
+		this.settings.contrast -= 0.1;
+		this.settings.contrast = Math.max(0, this.settings.contrast);
+		this.calculatePixels();
+	}
+
+	brighter() {
+		this.settings.brightness += 0.1;
+		this.settings.brightness = Math.min(1, this.settings.brightness);
+		this.calculatePixels();
+	}
+	darker() {
+		this.settings.brightness -= 0.1;
+		this.settings.brightness = Math.max(0, this.settings.brightness);
+		this.calculatePixels();
+	}
+
 	regenerateImage(){
 
 	}
@@ -178,7 +200,7 @@ class ImageCanvas {
     	}
     	this.ctx.putImageData(this.data, 0, 0);
     	this.filterCtx.putImageData(this.data, 0, 0);
-    	this.drawRepetitions();
+    	//this.drawRepetitions();
 	}
 }
 

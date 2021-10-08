@@ -20,30 +20,30 @@ var settings = {
   brightness: 0.5,
   contrast : 0.5,
   invert: false,
-  repetitions : {
-    x: 0,
-    y: 0,
-  },
-  offset: {
-    x: 0,
-    y: 0
-  },
-  spacing: {
-    x: 0.16,
-    y: 0.16
-  },
+  // repetitions : {
+  //   x: 0,
+  //   y: 0,
+  // },
+  // offset: {
+  //   x: 0,
+  //   y: 0
+  // },
+  // spacing: {
+  //   x: 0.16,
+  //   y: 0.16
+  // },
   rotation: 0,
   play: false,
   speed: 0.7,
-  drawMode: true,
-  stroke_width: 0.1,
-  stroke_repetitions: 0.3,
-  stroke_opacity: 1.0,
-  eraser: 0,
-  stroke_offset: {
-    x: 0.6,
-    y: 0.6
-  },
+  // drawMode: true,
+  // stroke_width: 0.1,
+  // stroke_repetitions: 0.3,
+  // stroke_opacity: 1.0,
+  // eraser: 0,
+  // stroke_offset: {
+  //   x: 0.6,
+  //   y: 0.6
+  // },
   scale: {
     numSteps: 30,
     note: "C",
@@ -63,7 +63,8 @@ var synthObj = {};
 
 var scaleFrequencies;
 //var settings.speed = 60;
-var playheadCanvas, imageData, ctx, playheadCtx, compressor, ongoingTouches, mouse, touchObject, audioCtx, backgroundColor, oscillators, reverbUrl,reverb,reverbGain;
+var playheadCanvas, imageData, ctx, playheadCtx, ongoingTouches, mouse, touchObject, backgroundColor;
+var oscillators, audioCtx, compressor, reverbUrl,reverb,reverbGain;
 // timing params
 var requestId, startTime;
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -73,9 +74,9 @@ window.AudioContext = window.AudioContext || window.webkitAudioContext;
 //console.log(settings.scale);
 
 window.onload = function(){
-  var l = document.getElementById("landing");
-  l.onclick = init;
- // init();
+  // var l = document.getElementById("landing");
+  // l.onclick = init;
+ init();
 };
 
 function handlePlay(){
@@ -127,14 +128,14 @@ function handleStop(){
 
 function init(){
   //log("init");
-  document.body.removeChild(document.getElementById("landing"));
+  //document.body.removeChild(document.getElementById("landing"));
   ongoingTouches = new Array();
 
   touchObject = {};
   oscillators = {};
 
    imageCanvas = new ImageCanvas(settings, handlePlay);
-   drawCanvas = new DrawCanvas(settings);
+   //drawCanvas = new DrawCanvas(settings);
    playheadCanvas = document.createElement("canvas");
    playheadCanvas.width = window.innerWidth;
    playheadCanvas.height = window.innerHeight;
@@ -152,29 +153,30 @@ function init(){
    setEventHandlers();
 
    document.body.onkeydown = function(e){
-    if(e.keyCode == 32){
-        if(settings.play){
-          settings.play = false;
-          handleStop();
-        } else {
-          settings.play = true;
-          handlePlay();
-
-        }
-    }
-    // else if(e.keyCode == 38){ // up key
-    //   settings.speed +=5;
-    // } else if(e.keyCode == 40){
-    //   settings.speed -=5;
-    // } else if(e.keyCode == 73){
-    //   invert();
-    // } else if(e.keyCode == 67){
-    //   contrast();
-    //  } else if(e.keyCode == 66){
-    //   brighter();
-    //  } else if(e.keyCode == 68){
-    //   darker();
-    // }
+     console.log(e.keyCode + " pressed");
+     if(e.keyCode == 32){ // space bar
+       if(settings.play){
+         settings.play = false;
+         handleStop();
+       } else {
+         settings.play = true;
+         handlePlay();
+       }
+     } else if(e.keyCode == 38){ // up key
+       settings.speed +=0.2; //should also adjust dial
+     } else if(e.keyCode == 40){ //down key
+       settings.speed -=0.2; //should also adjust dial
+     } else if(e.keyCode == 73){ // i key
+       imageCanvas.invert();
+     } else if(e.keyCode == 67){ //c key
+       imageCanvas.increaseContrast();
+     } else if(e.keyCode == 88){ //x key
+       imageCanvas.decreaseContrast();
+     } else if(e.keyCode == 66){//b key
+       imageCanvas.brighter();
+     } else if(e.keyCode == 68){ //d key
+       imageCanvas.darker();
+     }
   }
 
 }
@@ -250,6 +252,10 @@ function nextStep(){
 
     //using greyscale brightness of color data
     val = settings.maxGain*(imageCanvas.imageData[off]+imageCanvas.imageData[off+1]+imageCanvas.imageData[off+2])/(255*3);
+    //0.299r + 0.587g + 0.114b //original colour weighting
+    //val = settings.maxGain*(0.299*imageCanvas.imageData[off]+0.587*imageCanvas.imageData[off+1]+0.114*imageCanvas.imageData[off+2])/(255*3);
+
+
     //using one element of greyscale data + draw canvas
     //val = (imageCanvas.imageData[off]+drawCanvas.imageData[off]*(drawCanvas.imageData[off+3]/255))/255;
     //val = (imageCanvas.imageData[off])/255;

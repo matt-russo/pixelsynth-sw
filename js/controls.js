@@ -77,39 +77,37 @@ class Controls {
 // }
 	}
 	createHeader(){
-		container = document.createElement('div');
-	 container.id = "controls";
-	  container.className = "container-style";
-	  document.body.appendChild(container);
-	  var header = document.createElement("div");
-	  header.id = "header";
-	  container.appendChild(header);
-	  for(var i = 0; i < headerElements.length; i++){
-	  	var button = document.createElement('div');
-	  	button.innerHTML = headerElements[i];
-	  	button.className = "header-button";
-	  	button.id = i;
-	  	button.onclick = this.handleMenuChange;
-	  	header.appendChild(button);
-	  	headerElements[i]= button;
-	  }
-	  headerElements[0].className += " selected";
-    this.createSoundPanel(container);
-	  this.createImagePanel(container);
-	  this.createDrawPanel(container);
-	 panelElements[1].className = "panel hide";
-	 panelElements[2].className = "panel hide";
-	 var div = document.createElement('div');
-	 div.id = "close-button";
-	 div.innerHTML = "close controls";
-	 div.onclick = this.hideMenu;
-	 container.appendChild(div);
-		icon = document.createElement('div');
-		icon.className = "icon hidden";
-		icon.onclick = this.showMenu;
-		document.body.appendChild(icon);
-
-
+	   container = document.createElement('div');
+	   container.id = "controls";
+	   container.className = "container-style";
+	   document.body.appendChild(container);
+	   var header = document.createElement("div");
+     header.id = "header";
+     container.appendChild(header);
+     for(var i = 0; i < headerElements.length; i++){
+       var button = document.createElement('div');
+       button.innerHTML = headerElements[i];
+       button.className = "header-button";
+       button.id = i;
+       button.onclick = this.handleMenuChange;
+       header.appendChild(button);
+       headerElements[i]= button;
+     }
+     headerElements[0].className += " selected";
+     this.createSoundPanel(container);
+     this.createImagePanel(container);
+     //this.createDrawPanel(container);
+     panelElements[1].className = "panel hide";
+     // panelElements[2].className = "panel hide";
+     var div = document.createElement('div');
+     div.id = "close-button";
+     div.innerHTML = "close controls";
+     div.onclick = this.hideMenu;
+     container.appendChild(div);
+     icon = document.createElement('div');
+     icon.className = "icon hidden";
+     icon.onclick = this.showMenu;
+     document.body.appendChild(icon);
 	}
 
 	hideMenu(){
@@ -122,16 +120,14 @@ class Controls {
 	showMenu(){
 		 icon.className = "icon hidden";
 		container.className = "container-style";
-
 	}
 
 	createImagePanel(container){
 		var panel = document.createElement('div');
 		panel.className = "panel";
-	  	container.appendChild(panel);
+	  container.appendChild(panel);
 
-
-	 	this.addDropdown(images, panel, "select background image: ", "galactic_xray.jpg", this.selectImage.bind(this));
+	 	this.addDropdown(images, panel, "select image: ", "galactic_xray.jpg", this.selectImage.bind(this));
 	 	var label = document.createElement("LABEL");
 	 	label.className= "upload-container";
 	 	var span = document.createElement("SPAN");
@@ -145,53 +141,53 @@ class Controls {
 	 	panel.appendChild(label);
 	 	this.addDial("invert", "toggle", panel, this.updateSetting.bind(this), {value: this.settings.invert}, "invert");
 		this.addDial("brightness", "dial", panel, this.updateSetting.bind(this), {value: this.settings.brightness}, "calculatePixels");
-	  	this.addDial("contrast", "dial", panel, this.updateSetting.bind(this), {value: this.settings.brightness}, "calculatePixels");
+	  this.addDial("contrast", "dial", panel, this.updateSetting.bind(this), {value: this.settings.contrast}, "calculatePixels");
 	    //this.addDial("repetitions", "position", panel, this.updateSetting.bind(this), {x: this.settings.repetitions.x, y: this.settings.repetitions.y}, "drawRepetitions");
 	    //this.addDial("spacing", "position", panel, this.updateSetting.bind(this), {x: this.settings.spacing.x, y: this.settings.spacing.y}, "drawRepetitions");
 	   	//this.addDial("offset", "position", panel, this.updateSetting.bind(this), {x: this.settings.offset.x, y: this.settings.offset.y}, "drawRepetitions");
 	  // 	this.addDial("reset", "button", panel, this.invert.bind(this));
 	   	//this.addDial("clear image", "button", panel, this.imageCanvas.clearImage.bind(this.imageCanvas));
-	   	this.addDial("rotation", "dial", panel, this.updateSetting.bind(this), {value: this.settings.rotation}, "drawRepetitions");
+	   	//this.addDial("rotation", "dial", panel, this.updateSetting.bind(this), {value: this.settings.rotation}, "drawRepetitions");
 	  	//this.addDial("clear background", "button", panel, this.updateSetting.bind(this), {}, "clearImage");
 
-	  	nx.colorize('#f06');
+	  nx.colorize('#f06');
 		nx.colorize("fill", "#444");
-	  	panelElements.push(panel);
+	  panelElements.push(panel);
 	}
 
 	createSoundPanel(container){
-		var panel = document.createElement('div');
+    var panel = document.createElement('div');
 		panel.className = "panel";
 	  container.appendChild(panel);
 	  this.addDial("play", "toggle", panel, this.togglePlay.bind(this));
-	  	 this.addDial("speed", "dial", panel, this.updateSetting.bind(this), {value: this.settings.speed});
-	  	this.addDropdown(scales, panel, "scale: ", this.settings.scale.type, this.selectScale.bind(this));
-	  	this.addDropdown(notes, panel, "start note: ", this.settings.scale.note, this.selectKey.bind(this));
-	  	var octaves = [];
-	  	for(var i = 0; i < 9; i++){
-	  		octaves.push(i);
-	  	}
-	  	this.addDropdown(octaves, panel, "start octave: ", this.settings.scale.octave, this.selectOctave.bind(this));
-	  	this.addDropdown(numNotes, panel, "number of notes: ", this.settings.scale.numSteps, this.selectNum.bind(this));
+    this.addDial("speed", "dial", panel, this.updateSetting.bind(this), {value: this.settings.speed});
+    this.addDropdown(scales, panel, "scale: ", this.settings.scale.type, this.selectScale.bind(this));
+    this.addDropdown(notes, panel, "start note: ", this.settings.scale.note, this.selectKey.bind(this));
+    var octaves = [];
+    for(var i = 0; i < 9; i++){
+      octaves.push(i);
+    }
+    this.addDropdown(octaves, panel, "start octave: ", this.settings.scale.octave, this.selectOctave.bind(this));
+    this.addDropdown(numNotes, panel, "number of notes: ", this.settings.scale.numSteps, this.selectNum.bind(this));
 
-	  	panelElements.push(panel);
+    panelElements.push(panel);
 	}
 
-	createDrawPanel(container){
-		var panel = document.createElement('div');
-		panel.className = "panel";
-	  container.appendChild(panel);
-	  this.addDial("stroke_width", "dial", panel, this.updateSetting.bind(this), {value: this.settings.stroke_width});
-	  this.addDial("stroke_repetitions", "dial", panel, this.updateSetting.bind(this), {value: this.settings.stroke_repetitions});
-	 	this.addDial("stroke_opacity", "dial", panel, this.updateSetting.bind(this), {value: this.settings.stroke_opacity});
-
-	  this.addDial("eraser", "toggle", panel, this.updateSetting.bind(this), {value: this.settings.eraser});
-	  this.addDial("stroke_offset", "position", panel, this.updateSetting.bind(this), {x: this.settings.stroke_offset.x, y: this.settings.stroke_offset.y});
-
-	  this.addDial("clear drawing", "button", panel, this.drawCanvas.clear.bind(this.drawCanvas));
-
-	  	panelElements.push(panel);
-	}
+	// createDrawPanel(container){
+	// 	var panel = document.createElement('div');
+	// 	panel.className = "panel";
+	//   container.appendChild(panel);
+	//   this.addDial("stroke_width", "dial", panel, this.updateSetting.bind(this), {value: this.settings.stroke_width});
+	//   this.addDial("stroke_repetitions", "dial", panel, this.updateSetting.bind(this), {value: this.settings.stroke_repetitions});
+	//  	this.addDial("stroke_opacity", "dial", panel, this.updateSetting.bind(this), {value: this.settings.stroke_opacity});
+  //
+	//   this.addDial("eraser", "toggle", panel, this.updateSetting.bind(this), {value: this.settings.eraser});
+	//   this.addDial("stroke_offset", "position", panel, this.updateSetting.bind(this), {x: this.settings.stroke_offset.x, y: this.settings.stroke_offset.y});
+  //
+	//   this.addDial("clear drawing", "button", panel, this.drawCanvas.clear.bind(this.drawCanvas));
+  //
+	//   	panelElements.push(panel);
+	// }
 
 	togglePlay(){
 		if(this.settings.play){

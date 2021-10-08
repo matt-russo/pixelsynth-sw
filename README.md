@@ -7,13 +7,14 @@ Olivia Jack's [PixelSynth](https://ojack.xyz/PIXELSYNTH/), modified for Sonifica
 ### Functionality/Layout
 * move control panel to separate (non-overlay) panel
 * separate SOUND/IMAGE panels so everything is visible
-* fix border issue on bottom right of image (brightness contrast misalignment, aspect ratio issue?)
-* quantize rotation? or remove it?
 * fix width of image drop down (long image names pushed it over edge)
 * try vertical downsizing to number of scale steps (or averaging) so data from all rows is used?
+* control motion of dials with keyboard commands (to match current state)
 * choose/upload new default images
 * add other scales/voicings (hexatonic, some kind of lydian voicing...)
-* change 'background image' to 'select image'
+* add app name overlay (now that landing page is removed)
+
+
 
 
 ### Accessibility
@@ -30,13 +31,22 @@ Olivia Jack's [PixelSynth](https://ojack.xyz/PIXELSYNTH/), modified for Sonifica
 
 ### Completed modifications
 * default play mode is now set to 'off'
-* removed draw layer, control and event handlers
-* Image Control: removed repetitions, spacing, offset, clearbackground
+* removed draw canvas, disabled draw control and event handlers
+* Image Control: removed repetitions, spacing, offset, clearbackground, rotation
 * maintain colour images (changed toGreyscale to getImageData) (not using colour but could think about a colour mode)
 * alternate default note choices (more limited starting range)
-* amplitude compensation to reduce higher frequencies
+* amplitude compensation to reduce ammount of higher frequencies
 * added convolution reverb
 * enlarged and centered indicators on playhead
+* removed landing page (so no mouse click is required to start)
+* changed 'background image' to 'select image'
+* set up key commands:
+  * spacebar : play/pause
+  * i : invert image
+  * c: increase contrast
+  * x : decrease decrease contrast
+  * b : brighter
+  * d : darker
 
 ### Other/Bugs
 * hearing some crackling artifact:
@@ -45,4 +55,4 @@ Olivia Jack's [PixelSynth](https://ojack.xyz/PIXELSYNTH/), modified for Sonifica
   * maybe using reduced greyscale data would speed things up?
 * very high freq seems too loud on nNotes>60, is this a bug?
 * get custom URL?
-* mmobile version
+* mobile version
