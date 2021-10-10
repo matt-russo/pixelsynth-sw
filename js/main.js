@@ -34,7 +34,7 @@ var settings = {
   // },
   rotation: 0,
   play: false,
-  speed: 0.7,
+  speed: 0.2,
   // drawMode: true,
   // stroke_width: 0.1,
   // stroke_repetitions: 0.3,
@@ -82,6 +82,7 @@ window.onload = function(){
 function handlePlay(){
  prevTime = audioCtx.currentTime;
  settings.play = true;
+ nx.widgets["play"].set({value: settings.play});
 // console.log(audioCtx);
  if(audioCtx.resume){
     audioCtx.resume();
@@ -103,6 +104,7 @@ function regenerateSynth(){
 
 function handleStop(){
   settings.play = false;
+  nx.widgets["play"].set({value: settings.play});
   //native oscillaators
   if(audioCtx.suspend){
    // audioCtx.resume();
@@ -163,10 +165,14 @@ function init(){
          handlePlay();
        }
      } else if(e.keyCode == 38){ // up key
-       settings.speed +=0.2; //should also adjust dial
+       settings.speed +=0.1;
+       nx.widgets["speed"].set({value: settings.speed});
      } else if(e.keyCode == 40){ //down key
-       settings.speed -=0.2; //should also adjust dial
+       settings.speed -=0.1;
+       settings.speed = Math.max(settings.speed,0);
+       nx.widgets["speed"].set({value: settings.speed});
      } else if(e.keyCode == 73){ // i key
+       imageCanvas.settings.invert = !imageCanvas.settings.invert;
        imageCanvas.invert();
      } else if(e.keyCode == 67){ //c key
        imageCanvas.increaseContrast();
@@ -174,7 +180,7 @@ function init(){
        imageCanvas.decreaseContrast();
      } else if(e.keyCode == 66){//b key
        imageCanvas.brighter();
-     } else if(e.keyCode == 68){ //d key
+     } else if(e.keyCode == 86){ //v key (left of b)
        imageCanvas.darker();
      }
   }
@@ -230,7 +236,8 @@ function initAudioCtx(){
 
 function nextStep(){
   //var col = Math.floor(audioCtx.currentTime*settings.speed);
-  var step = Math.floor((audioCtx.currentTime - prevTime)*(settings.speed*400-200));
+  //var step = Math.floor((audioCtx.currentTime - prevTime)*(settings.speed*400-200));
+  var step = Math.floor((audioCtx.currentTime - prevTime)*(settings.speed*700)); //so minimum speed is 0
   var col = colPos + step;
   if(col>=imageCanvas.canvas.width){
     while(col>=imageCanvas.canvas.width){

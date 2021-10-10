@@ -5,29 +5,18 @@ Olivia Jack's [PixelSynth](https://ojack.xyz/PIXELSYNTH/), modified for Sonifica
 ## TO DO
 
 ### Functionality/Layout
-* move control panel to separate (non-overlay) panel
-* separate SOUND/IMAGE panels so everything is visible
-* fix width of image drop down (long image names pushed it over edge)
 * try vertical downsizing to number of scale steps (or averaging) so data from all rows is used?
-* control motion of dials with keyboard commands (to match current state)
 * choose/upload new default images
 * add other scales/voicings (hexatonic, some kind of lydian voicing...)
-* add app name overlay (now that landing page is removed)
-
-
+* add how it works info
 
 
 ### Accessibility
-* set up keyboard commands (spacebar is currently set to play/pause)
 * check/add alt text
-* alternative to dials? (can increment with keyboard)
 * audio marker for edges of image?
 * improve colour contrast/font/font size
+* access upload link
 * research other requirements
-
-### Aesthetics
-* alternate colour scheme/landing page graphic to distinguish from original
-
 
 ### Completed modifications
 * default play mode is now set to 'off'
@@ -40,13 +29,15 @@ Olivia Jack's [PixelSynth](https://ojack.xyz/PIXELSYNTH/), modified for Sonifica
 * enlarged and centered indicators on playhead
 * removed landing page (so no mouse click is required to start)
 * changed 'background image' to 'select image'
+* combined SOUND/IMAGE panels, changed header to PIXELSYNTH
+* set minium speed to zero (so direction is always left-right), increased max speed on dial (can go faster with keyboard commands)
 * set up key commands:
   * spacebar : play/pause
-  * i : invert image
+  * i : invert image (would n be better? beside the other commands)
   * c: increase contrast
   * x : decrease decrease contrast
   * b : brighter
-  * d : darker
+  * v : darker (chose v since it's beside b)
 
 ### Other/Bugs
 * hearing some crackling artifact:
@@ -55,4 +46,4 @@ Olivia Jack's [PixelSynth](https://ojack.xyz/PIXELSYNTH/), modified for Sonifica
   * maybe using reduced greyscale data would speed things up?
 * very high freq seems too loud on nNotes>60, is this a bug?
 * get custom URL?
-* mobile version
+* mobile version? (no sound on iOS, is audio context starting?)

@@ -158,28 +158,34 @@ class ImageCanvas {
 	   		this.originalData[i] = this.data.data[i];
 	   	}
 	  this.calculatePixels();
+
+		nx.widgets["invert"].set({value: this.settings.invert});
 	}
 
 	increaseContrast() {
 		this.settings.contrast += 0.1;
 		this.settings.contrast = Math.min(1, this.settings.contrast);
 		this.calculatePixels();
+		nx.widgets["contrast"].set({value: this.settings.contrast});
 	}
 	decreaseContrast() {
 		this.settings.contrast -= 0.1;
 		this.settings.contrast = Math.max(0, this.settings.contrast);
 		this.calculatePixels();
+		nx.widgets["contrast"].set({value: this.settings.contrast});
 	}
 
 	brighter() {
 		this.settings.brightness += 0.1;
 		this.settings.brightness = Math.min(1, this.settings.brightness);
 		this.calculatePixels();
+		nx.widgets["brightness"].set({value: this.settings.brightness});
 	}
 	darker() {
 		this.settings.brightness -= 0.1;
 		this.settings.brightness = Math.max(0, this.settings.brightness);
 		this.calculatePixels();
+		nx.widgets["brightness"].set({value: this.settings.brightness});
 	}
 
 	regenerateImage(){

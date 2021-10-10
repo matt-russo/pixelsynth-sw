@@ -16,17 +16,17 @@ select{
 	margin-top: 3px;
 }
 .label{
-	width: 100px;
+	width: 80px;
 	/*height: 20px
 	font-weight: bold;*/
 	text-align: center;
 	font-size: 22px;
 	color: #fff;
 
-		margin-bottom: 3px;
-    margin-left: 85px;
+	margin-bottom: 3px;
+  /* margin-left: 75px; */
 		   /* word-wrap: break-word;*/
-
+  margin-left: auto;
 }
 
 #close-button{
@@ -43,12 +43,13 @@ select{
 .small-canvas{
 
   margin-top: 5px;
-	margin-left: 100px;
+	margin-left: 75px;
+  /* margin: auto; */
 }
 .header-label{
 	font-size: 22px;
 	color: #fff;
-	margin-bottom: 10px;
+	margin-bottom: 5px;
 	margin-top: 10px;
 }
 
@@ -76,7 +77,7 @@ select{
 #credit{
 	position: fixed;
 	bottom: 5px;
-	right: 5px;
+	left: 5px;
 	color: #fff;
 	z-index: 300;
 }
@@ -96,8 +97,8 @@ select{
 	text-align: center;
 }
 .container-style {
-	width: 320px;
-    background:rgba(0, 0, 0, 0.9);
+	width: 400px;
+  background:rgba(0, 0, 0, 0.9);
 }
 
 .panel{
@@ -174,8 +175,8 @@ input[type="file"] {
 }
 .header-button {
 	color: #fff;
-	width: 48.6%;
-	background-color: #f06;
+  width: 98.8%; /*can't figure out why 100% or fixed width doesn't line up with container */
+	background-color: #000;
 	display: inline-block;
 	line-height: 30px;
 	text-align: center;
@@ -186,7 +187,7 @@ input[type="file"] {
 }
 
 .header-button.selected{
-	background-color: #000;
+	background-color: #f06;
 	border-width: 3px 3px 0px 3px;
 }
 
