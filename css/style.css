@@ -1,6 +1,6 @@
 body {
   padding: 50px;
-  font: 26px "Courier New", Courier, monospace;
+  font: 26px "Verdana","Courier New", Courier, monospace;
 }
 
 a {
@@ -11,7 +11,7 @@ select{
 	background-color: #333;
 	color: #fff;
 	font-size: 14px;
-	font: 24px "Courier New", Courier, monospace;
+	font: 24px "Verdana","Courier New", Courier, monospace;
 	/*border-color: rgb(153, 255, 204);*/
 	margin-top: 3px;
 }
@@ -30,15 +30,15 @@ select{
 }
 
 #close-button{
-	color: #ccc;
-	background-color: #444;
+	color: #fff;
+	background-color: #757575;
 	text-align: center;
 	padding: 5px;
 	font-size: 20px;
 }
 
 #close-button:hover{
-	background-color: #f06;
+	background-color: #DB005B;
 }
 .small-canvas{
 
@@ -87,7 +87,7 @@ select{
 }
 
 #link:hover{
-	color: #f06;
+	color: #DB005B;
 }
 .dropdown-label{
 	font-size: 12px;
@@ -105,7 +105,7 @@ select{
 	padding: 10px;
   border-style: solid;
 	border-width: 3px;
-	border-color: #444;
+	border-color: #757575;
 	display: block;
 }
 
@@ -129,7 +129,7 @@ select{
 
 .upload-container:hover{
 	/*color: #fff;*/
-	color: #f06;
+	color: #DB005B;
 	/*background-color: #f06;*/
 
 }
@@ -173,22 +173,69 @@ input[type="file"] {
 	width: 100%;
 	height: 30px;
 }
-.header-button {
+.header-button {/*now just the title since we consolidated panels*/
 	color: #fff;
+  font-size: 36px;
   width: 98.8%; /*can't figure out why 100% or fixed width doesn't line up with container */
 	background-color: #000;
 	display: inline-block;
-	line-height: 30px;
+	line-height: 40px;
 	text-align: center;
 	border-style: solid;
 	border-width: 1px 1px 3px 1px;
-	border-color: #444;
+	border-color: #757575;
 	text-transform: uppercase;
 }
 
-.header-button.selected{
-	background-color: #f06;
+.header-button.selected{ /*now just the title since we consolidated panels*/
+	background-color: #DB005B;
 	border-width: 3px 3px 0px 3px;
+}
+
+
+
+/* Style the buttons that are used to open and close the accordion panel */
+.accordion {
+  background-color: #757575;
+
+  position: fixed;
+	top: 5px;
+	left: 5px;
+	color: #fff;
+  font: 24px "Verdana","Courier New", Courier, monospace;
+
+  cursor: pointer;
+  padding: 5px;
+  width: 230px;
+  text-align: center;
+  border: 2px solid #757575;
+  outline: none;
+  transition: 0.4s;
+  z-index: 300;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .accordion:hover {
+  /* color: #DB005B; */
+  border: 2px solid #DB005B;
+  /* color: rgb(153, 255, 204); */
+}
+
+/* Style the accordion panel. Note: hidden by default */
+.accordion-panel {
+  padding: 18px;
+  /* background-color: #757575; */
+  color: #fff;
+  font: 22px "Verdana","Courier New", Courier, monospace;
+  position: relative;
+  /* top: 70px;
+  left: 20px; */
+  width: 100%;
+  display: none;
+  /* max-height: 0; */
+  overflow: hidden;
+  /* transition: max-height 0.2s ease-out; */
+  /* z-index: 200; */
 }
 
   html, body { height: 100%; margin: 0; padding: 0; background-color: "rgb(16, 255, 207)"; cursor: crosshair;}

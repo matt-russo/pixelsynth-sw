@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:fb="http://ogp.me/ns/fb#">
   <head>
-    <title>.::::PIXELSYNTH::::.</title>
+    <title>PIXELSYNTH</title>
     <!-- Twitter Card data -->
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@rhizomaticode">
 <meta name="twitter:creator" content="@rhizomaticode">
-<meta name="twitter:title" content=".::::PIXELSYNTH-SW::::.">
+<meta name="twitter:title" content="PIXELSYNTH">
 <meta name="twitter:description" content="Browser based synthesizer for turning images into sound. Modified for Sonification World.">
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/ojack/PIXELSYNTH/master/images/preview2.png">
@@ -30,6 +30,23 @@
     <script src="./js/reverb.js"></script>
   </head>
   <body>
+    <button id="how-it-works-button" class="accordion">How it works
+      <div id="how-it-works-text" class="accordion-panel">
+        <p>The selected image is scanned from left to right and the light is converted to sound.<br>
+          Light near the bottom of the image produces low notes and
+          light near the top of the image produces higher notes.<p>
+        <p>Keyboard commands: <p>
+        <p>spacebar - play/pause <br>
+        i - invert brightness <br>
+        c - increase contrast <br>
+        x - decrease contrast <br>
+        b - make brighter <br>
+        v - make darker
+       </p>
+      </div>
+    </button>
+
+
   	<div id="credit"> by <A id="link" href="https://ojack.github.io">olivia</A> </div>
     <!-- <div id="landing"><div id="logo"></div> -->
   </body>

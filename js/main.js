@@ -69,6 +69,7 @@ var oscillators, audioCtx, compressor, reverbUrl,reverb,reverbGain;
 var requestId, startTime;
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
 
+//var acc = document.getElementById("how-it-works");
 //var scaleFrequencies = ScaleMaker.makeScale('chinesePentatonic', 'A#3', numSteps).inHertz;
 
 //console.log(settings.scale);
@@ -199,6 +200,8 @@ function setEventHandlers(){
   // playheadCanvas.addEventListener("mouseout", handleMouseUp, false);
   // playheadCanvas.addEventListener("mouseleave", handleMouseUp, false);
   window.addEventListener("resize", onResize);
+
+  document.getElementById("how-it-works-button").addEventListener("click", toggleHowItWorks);
 }
 
 
@@ -330,5 +333,28 @@ function handleTouchEnd(e) {
 }
 
 function handleTouchCancel(e) {
+
+}
+
+function toggleHowItWorks(){
+  /* Toggle between adding and removing the "active" class,
+  to highlight the button that controls the panel */
+  //this.classList.toggle("active");
+  /* Toggle between hiding and showing the active panel */
+  //var panel = this.nextElementSibling;
+  var button = document.getElementById("how-it-works-button");
+  var panel = document.getElementById("how-it-works-text");
+  if (panel.style.display === "block") {
+    panel.style.display = "none";
+    button.style.width = "240px";
+  } else {
+    panel.style.display = "block";
+    button.style.width = "60%";
+  }
+  // if (panel.style.maxHeight) {
+  //     panel.style.maxHeight = null;
+  //   } else {
+  //     panel.style.maxHeight = "26px";
+  // }
 
 }

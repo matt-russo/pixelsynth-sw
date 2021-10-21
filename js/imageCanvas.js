@@ -19,7 +19,7 @@ class ImageCanvas {
 	  this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 	  //this.ctx = ctx;
 	  document.body.appendChild(this.canvas);
-	  this.loadImage("./images/galactic_xray.jpg");
+	  this.loadImage("./images/galactic_xray.jpg","galactic - xray");
 	}
 
 
@@ -43,10 +43,11 @@ class ImageCanvas {
 	   	}
 	}
 
-	loadImage(filename){
-   		console.log(filename);
+	loadImage(filename,imageName=""){
+   		console.log(filename,imageName);
     	var img = new Image();
     	img.src = filename;
+			img.alt = imageName; //set this to descriptive file name
     	img.onload = function() {
     		this.filterCtx.drawImage(img, 0, 0, this.canvas.width, this.canvas.height);
     		this.ctx.fillStyle = "rgb(0, 0, 0)";

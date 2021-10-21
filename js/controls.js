@@ -1,7 +1,7 @@
 var images=[
-{name: "galactic - xray", value: "galactic_xray.jpg"},
-{name: "galactic - optical", value: "galactic_optical.jpg"},
-{name: "galactic - infrared", value: "galactic_ir.jpg"},
+{name: "galactic (xray)", value: "galactic_xray.jpg"},
+{name: "galactic (optical)", value: "galactic_optical.jpg"},
+{name: "galactic (infrared)", value: "galactic_ir.jpg"},
 {name: "skyline", value: "skyline.png"},
 {name: "stairway", value: "stairway.png"},
 {name: "night sky", value: "nightsky.jpg"},
@@ -152,8 +152,8 @@ class Controls {
 	   	//this.addDial("rotation", "dial", panel, this.updateSetting.bind(this), {value: this.settings.rotation}, "drawRepetitions");
 	  	//this.addDial("clear background", "button", panel, this.updateSetting.bind(this), {}, "clearImage");
 
-	  nx.colorize('#f06');
-		nx.colorize("fill", "#444");
+	  nx.colorize('#DB005B');
+		nx.colorize("fill", "#757575");
 	  panelElements.push(panel);
 	}
 
@@ -206,8 +206,8 @@ class Controls {
 	  this.addDial("contrast", "dial", panel, this.updateSetting.bind(this), {value: this.settings.contrast}, "calculatePixels");
     this.addDial("invert", "toggle", panel, this.updateSetting.bind(this), {value: this.settings.invert}, "invert");
 
-    nx.colorize('#f06');
-		nx.colorize("fill", "#444");
+    nx.colorize('#DB005B');
+		nx.colorize("fill", "#757575");
     panelElements.push(panel);
   }
 	// createDrawPanel(container){
@@ -316,15 +316,17 @@ class Controls {
 		   	if(options[i].value){
 		   		op.value = options[i].value;
 		   		op.text = options[i].name;
-
+          op.alt = options[i].name;
 		   	}else{
 		   		op.value = options[i];
 		   		op.text = options[i];
+          op.alt = options[i];
 		   	}
 		   	dropdown.options.add(op);
 	   	}
 	   	dropdown.onchange = handler;
 	   	dropdown.value = value;
+      dropdown.name = "test";
 	   	this.addLabel(label, container, "header-label");
 	   	container.appendChild(dropdown);
 	}
@@ -339,7 +341,9 @@ class Controls {
 
 	selectImage(e){
 		//console.log(this.imageCanvas);
-  		this.imageCanvas.loadImage("./images/" + e.target.value);
+    var imageName = e.target.options[e.target.selectedIndex].alt;
+    //var imageName = e.target.options[e.target.selectedIndex].innerHTML;
+  	this.imageCanvas.loadImage("./images/" + e.target.value,imageName);
 	}
 
 	selectKey(e){

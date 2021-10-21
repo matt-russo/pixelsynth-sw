@@ -8,15 +8,15 @@ Olivia Jack's [PixelSynth](https://ojack.xyz/PIXELSYNTH/), modified for Sonifica
 * try vertical downsizing to number of scale steps (or averaging) so data from all rows is used?
 * choose/upload new default images
 * add other scales/voicings (hexatonic, some kind of lydian voicing...)
-* add how it works info
-
+* add uploaded file to dropdown and select?
 
 ### Accessibility
-* check/add alt text
 * audio marker for edges of image?
-* improve colour contrast/font/font size
-* access upload link
+* improve colour contrast/font/font size (https://webaim.org/resources/contrastchecker/)
+  * contrast ratio > 4.5:1 for normal text, 3:1 for >18px fontsize
+* accessible upload link (not sure how to do this)
 * research other requirements
+  * ARIA: https://www.deque.com/blog/a11y-support-series-part-1-aria-tab-panel-accessibility/
 
 ### Completed modifications
 * default play mode is now set to 'off'
@@ -31,6 +31,9 @@ Olivia Jack's [PixelSynth](https://ojack.xyz/PIXELSYNTH/), modified for Sonifica
 * changed 'background image' to 'select image'
 * combined SOUND/IMAGE panels, changed header to PIXELSYNTH
 * set minium speed to zero (so direction is always left-right), increased max speed on dial (can go faster with keyboard commands)
+* removed stylization on page title (easier for screen readers)
+* added 'how it works' button
+* added alt text to images (same name that appears in drop down list)
 * set up key commands:
   * spacebar : play/pause
   * i : invert image (would n be better? beside the other commands)
@@ -38,6 +41,11 @@ Olivia Jack's [PixelSynth](https://ojack.xyz/PIXELSYNTH/), modified for Sonifica
   * x : decrease decrease contrast
   * b : brighter
   * v : darker (chose v since it's beside b)
+* increasing colour contrasts
+  * changed #444 to #757575 to reach minimum colour contrast with white and black
+  * changed #FO6 to #DB005B to reach minimu colour contrast with white
+  * changed #ccc to white (on #444 for close controls text)
+* changed "Courier new" to "Verdana"
 
 ### Other/Bugs
 * hearing some crackling artifact:
