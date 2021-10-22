@@ -32,6 +32,8 @@ scaleDefs.chinesePentatonic = [4, 2, 1, 4, 1];
 scaleDefs.naturalMinor = [2, 1, 2, 2, 1, 2, 2];
 scaleDefs.harmonicMinor = [2, 1, 2, 2, 1, 3, 1];
 scaleDefs.melodicMinor = [2, 1, 2, 2, 2, 2, 1];
+scaleDefs.majorHexatonic = [2, 2, 1, 2, 2, 3];
+scaleDefs.minorHexatonic = [2, 1, 2, 2, 3, 2];
 
 /*
  * Maths helpers

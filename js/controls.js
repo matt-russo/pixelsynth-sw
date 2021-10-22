@@ -12,8 +12,8 @@ var images=[
 { name: "dots", value: "newsdots.jpg"},
 { name: "basquiat", value: "basquiat.jpg"},
 { name: "keith haring", value: "haring2.jpeg"},
-{ name: "maze", value: "maze.png"},
-{name: "text", value: "text.png"}
+{ name: "maze", value: "maze.png"}
+//{name: "text", value: "text.png"} //missing file
 ];
 
 var scales = ['major',
@@ -25,7 +25,9 @@ var scales = ['major',
 'majorPentatonic',
 'minorPentatonic',
 'kuomiPentatonic',
-'chinesePentatonic'];
+'chinesePentatonic',
+'majorHexatonic',
+'minorHexatonic'];
 
 var notes = [
   "A",
@@ -311,6 +313,7 @@ class Controls {
 
 	addDropdown(options, container, label, value, handler){
 		var dropdown=document.createElement("select");
+    //dropdown.setAttribute("id", label); //could access this later to add uploaded files to dropdown
 	 	for(var i = 0; i < options.length; i++){
 		   	var op = new Option();
 		   	if(options[i].value){
@@ -326,7 +329,7 @@ class Controls {
 	   	}
 	   	dropdown.onchange = handler;
 	   	dropdown.value = value;
-      dropdown.name = "test";
+      //dropdown.name = "test";
 	   	this.addLabel(label, container, "header-label");
 	   	container.appendChild(dropdown);
 	}

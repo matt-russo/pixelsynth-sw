@@ -18,7 +18,7 @@ var isPlaying = false;
 
 var settings = {
   brightness: 0.5,
-  contrast : 0.5,
+  contrast : 0.5 ,
   invert: false,
   // repetitions : {
   //   x: 0,
@@ -34,7 +34,7 @@ var settings = {
   // },
   rotation: 0,
   play: false,
-  speed: 0.2,
+  speed: 0.15,
   // drawMode: true,
   // stroke_width: 0.1,
   // stroke_repetitions: 0.3,
@@ -156,8 +156,8 @@ function init(){
    setEventHandlers();
 
    document.body.onkeydown = function(e){
-     console.log(e.keyCode + " pressed");
-     if(e.keyCode == 32){ // space bar
+     //console.log(e.keyCode + " pressed");
+     if(e.keyCode == 32 || e.keyCode == 880){ // space bar or p
        if(settings.play){
          settings.play = false;
          handleStop();
@@ -166,10 +166,10 @@ function init(){
          handlePlay();
        }
      } else if(e.keyCode == 38){ // up key
-       settings.speed +=0.1;
+       settings.speed +=0.05;
        nx.widgets["speed"].set({value: settings.speed});
      } else if(e.keyCode == 40){ //down key
-       settings.speed -=0.1;
+       settings.speed -=0.05;
        settings.speed = Math.max(settings.speed,0);
        nx.widgets["speed"].set({value: settings.speed});
      } else if(e.keyCode == 73){ // i key
@@ -245,23 +245,34 @@ function nextStep(){
   if(col>=imageCanvas.canvas.width){
     while(col>=imageCanvas.canvas.width){
       col-=imageCanvas.canvas.width;
+      //trigger sound to indicate start here
     }
   }
   if(col < 0) col+=imageCanvas.canvas.width;
 
   playheadCtx.clearRect(0, 0, playheadCanvas.width, playheadCanvas.height);
-  playheadCtx.fillStyle = "rgba(255, 0, 102, 1)";
+  playheadCtx.fillStyle = "rgba(219, 0, 91, 1)";
   playheadCtx.fillRect(col-5, 0, 10, imageCanvas.canvas.height);
   playheadCtx.fillStyle = "rgba(153, 255, 204, 1)";
+
+  var rowRange = Math.floor(imageCanvas.canvas.height/settings.scale.numSteps/2); // divide by 2 to cover all area
 
   var gainVals = [];
   for(var i = 0; i < settings.scale.numSteps; i++){
     var row = Math.floor((i+0.5)*imageCanvas.canvas.height/settings.scale.numSteps);
     var off = (row*imageCanvas.canvas.width+col)*4;
-    var val;
+    var val=0;
 
     //using greyscale brightness of color data
-    val = settings.maxGain*(imageCanvas.imageData[off]+imageCanvas.imageData[off+1]+imageCanvas.imageData[off+2])/(255*3);
+    // val = settings.maxGain*(imageCanvas.imageData[off]+imageCanvas.imageData[off+1]+imageCanvas.imageData[off+2])/(255*3);
+
+    //average over nearby rows
+    var rowStep = imageCanvas.canvas.width*4;
+    for (let j=-rowRange;j<=rowRange;j++){
+      val += (imageCanvas.imageData[off + j*rowStep]+imageCanvas.imageData[off+1+ j*rowStep]+imageCanvas.imageData[off+2+ j*rowStep])/(255*3)/(2*rowRange+1);
+      //val = Math.max(val,(imageCanvas.imageData[off + j*rowStep]+imageCanvas.imageData[off+1+ j*rowStep]+imageCanvas.imageData[off+2+ j*rowStep])/(255*3));
+    }
+
     //0.299r + 0.587g + 0.114b //original colour weighting
     //val = settings.maxGain*(0.299*imageCanvas.imageData[off]+0.587*imageCanvas.imageData[off+1]+0.114*imageCanvas.imageData[off+2])/(255*3);
 
@@ -274,7 +285,7 @@ function nextStep(){
        // }
     //playheadCtx.fillRect(col-5, row, 10, val*20);
     playheadCtx.fillRect(col-5, row - val*20/2, 10, val*20);
-    gainVals[i] = val;
+    gainVals[i] = settings.maxGain*val;
        // if(val > 0) synth.playNote(i, val);
     }
   //if (col%20==0){synth.updateGains(gainVals);}; //try throlling, didn't help with artifact
