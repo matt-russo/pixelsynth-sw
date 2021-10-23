@@ -52,7 +52,8 @@ var settings = {
   },
 
   reverb: 0.25,
-  maxGain: 0.75
+  maxGain: 0.75,
+  startClick: 0.5
 };
 
 var synthObj = {};
@@ -65,6 +66,9 @@ var scaleFrequencies;
 //var settings.speed = 60;
 var playheadCanvas, imageData, ctx, playheadCtx, ongoingTouches, mouse, touchObject, backgroundColor;
 var oscillators, audioCtx, compressor, reverbUrl,reverb,reverbGain;
+var startClickGain,bufferLoader;
+var startClickBuffer = null;
+var firstPlay=true;
 // timing params
 var requestId, startTime;
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -84,6 +88,9 @@ function handlePlay(){
  prevTime = audioCtx.currentTime;
  settings.play = true;
  nx.widgets["play"].set({value: settings.play});
+ if (firstPlay){
+   playSound(audioCtx,startClickBuffer, startClickGain);
+   firstPlay=false;}
 // console.log(audioCtx);
  if(audioCtx.resume){
     audioCtx.resume();
@@ -227,6 +234,18 @@ function initAudioCtx(){
   });
   compressor.connect(reverb);
 
+
+  startClickGain = audioCtx.createGain();
+  startClickGain.connect(audioCtx.destination);
+  //gain.connect(this.ctx.destination);
+  startClickGain.gain.value = settings.startClick;
+
+  bufferLoader = new BufferLoader(audioCtx,['./sounds/startClick.mp3'],
+  	function(bufferList) {
+  		startClickBuffer = bufferList[0];
+  	});
+  bufferLoader.load();
+
   scaleFrequencies = makeScale(settings.scale.type, 'C3', settings.scale.numSteps).inHertz;
   synth = new Synthesizer(scaleFrequencies, compressor, audioCtx);
 
@@ -246,6 +265,7 @@ function nextStep(){
     while(col>=imageCanvas.canvas.width){
       col-=imageCanvas.canvas.width;
       //trigger sound to indicate start here
+      playSound(audioCtx,startClickBuffer, startClickGain);
     }
   }
   if(col < 0) col+=imageCanvas.canvas.width;
@@ -298,34 +318,34 @@ function nextStep(){
 }
 
 
-function handleMouseStart(e){
-  // isScrubbing = true;
-  // console.log(e.pageX);
-  // colPos = e.pageX;
-  // console.log(colPos);
-  drawCanvas.startStroke(e.pageX, e.pageY);
-}
-
-function handleMouseMove(e){
-  // if(isScrubbing){
-  //    colPos = e.pageX;
-  //  }
-   drawCanvas.continueStroke(e.pageX, e.pageY);
-}
-
-function handleMouseUp(){
-  //isScrubbing = false;
-  drawCanvas.endStroke();
-}
-
-function handleTouchStart(e) {
-  // isScrubbing = true;
-  //  var touches = e.changedTouches;
-  if(e.touches!=undefined){
-    // colPos = e.touches[0].pageX;
-    drawCanvas.startStroke(e.touches[0].pageX, e.touches[0].pageY);
-  }
-}
+// function handleMouseStart(e){
+//   // isScrubbing = true;
+//   // console.log(e.pageX);
+//   // colPos = e.pageX;
+//   // console.log(colPos);
+//   drawCanvas.startStroke(e.pageX, e.pageY);
+// }
+//
+// function handleMouseMove(e){
+//   // if(isScrubbing){
+//   //    colPos = e.pageX;
+//   //  }
+//    drawCanvas.continueStroke(e.pageX, e.pageY);
+// }
+//
+// function handleMouseUp(){
+//   //isScrubbing = false;
+//   drawCanvas.endStroke();
+// }
+//
+// function handleTouchStart(e) {
+//   // isScrubbing = true;
+//   //  var touches = e.changedTouches;
+//   if(e.touches!=undefined){
+//     // colPos = e.touches[0].pageX;
+//     drawCanvas.startStroke(e.touches[0].pageX, e.touches[0].pageY);
+//   }
+// }
 
 function onResize(){
   imageCanvas.resize(window.innerWidth, window.innerHeight);
@@ -334,18 +354,18 @@ function onResize(){
   playheadCanvas.height = window.innerHeight;
 }
 
-function handleTouchMove(e) {
-  drawCanvas.continueStroke(e.touches[0].pageX, e.touches[0].pageY);
-
-}
-
-function handleTouchEnd(e) {
-  drawCanvas.endStroke();
-}
-
-function handleTouchCancel(e) {
-
-}
+// function handleTouchMove(e) {
+//   drawCanvas.continueStroke(e.touches[0].pageX, e.touches[0].pageY);
+//
+// }
+//
+// function handleTouchEnd(e) {
+//   drawCanvas.endStroke();
+// }
+//
+// function handleTouchCancel(e) {
+//
+// }
 
 function toggleHowItWorks(){
   /* Toggle between adding and removing the "active" class,

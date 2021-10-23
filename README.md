@@ -11,7 +11,6 @@ Olivia Jack's [PixelSynth](https://ojack.xyz/PIXELSYNTH/), modified for Sonifica
 * add uploaded file to dropdown and select? (tricky)
 
 ### Accessibility
-* audio marker for edges of image?
 * accessible upload link (not sure how to do this)
 * research other requirements
   * ARIA: https://www.deque.com/blog/a11y-support-series-part-1-aria-tab-panel-accessibility/
@@ -48,6 +47,7 @@ Olivia Jack's [PixelSynth](https://ojack.xyz/PIXELSYNTH/), modified for Sonifica
   * changed #FO6 to #DB005B to reach minimu colour contrast with white
   * changed #ccc to white (on #444 for close controls text)
 * changed "Courier new" to "Verdana"
+* added audio marker for left edge of image (called startClick)
 
 ### Other/Bugs
 * hearing some crackling artifact:
