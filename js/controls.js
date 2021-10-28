@@ -280,19 +280,19 @@ class Controls {
 
 	addDial(label, type, container, handler, startVal, canvasHandler){
 		var dialHolder = document.createElement('div');
-		dialHolder.style.padding = "5px";
+		dialHolder.style.padding = "4px";
 		dialHolder.style.display = "inline-block";
 		var testDial = document.createElement('canvas');
 		if(type=="position"){
 			dialHolder.style.padding = "3px";
-			testDial.width = 68;
-			testDial.height = 68;
+			testDial.width = 56;
+			testDial.height = 56;
 			var l = label.replace(/_/g,' ');
 			this.addLabel(l, dialHolder, "dropdown-label");
 		} else {
 			testDial.className = "small-canvas";
-      testDial.width = 68;
-      testDial.height = 68;
+      testDial.width = 56;
+			testDial.height = 56;
 			var l = label.replace(/_/g,' ');
 			this.addLabel(l, dialHolder, "label");
 		}

@@ -1,6 +1,6 @@
 body {
   padding: 50px;
-  font: 26px "Verdana","Courier New", Courier, monospace;
+  font: 22px "Verdana","Courier New", Courier, monospace;
 }
 
 a {
@@ -10,8 +10,8 @@ a {
 select{
 	background-color: #333;
 	color: #fff;
-	font-size: 14px;
-	font: 24px "Verdana","Courier New", Courier, monospace;
+	/* font-size: 14px; */
+	font: 20px "Verdana","Courier New", Courier, monospace;
 	/*border-color: rgb(153, 255, 204);*/
 	margin-top: 3px;
 }
@@ -20,13 +20,14 @@ select{
 	/*height: 20px
 	font-weight: bold;*/
 	text-align: center;
-	font-size: 22px;
+	font-size: 18px;
 	color: #fff;
 
 	margin-bottom: 3px;
   /* margin-left: 75px; */
 		   /* word-wrap: break-word;*/
   margin-left: auto;
+  margin-left: 50px;
 }
 
 #close-button{
@@ -34,7 +35,7 @@ select{
 	background-color: #757575;
 	text-align: center;
 	padding: 5px;
-	font-size: 20px;
+	font-size: 18px;
 }
 
 #close-button:hover{
@@ -43,11 +44,11 @@ select{
 .small-canvas{
 
   margin-top: 5px;
-	margin-left: 75px;
+	margin-left: 65px;
   /* margin: auto; */
 }
 .header-label{
-	font-size: 22px;
+	font-size: 18px;
 	color: #fff;
 	margin-bottom: 5px;
 	margin-top: 10px;
@@ -97,7 +98,7 @@ select{
 	text-align: center;
 }
 .container-style {
-	width: 30%;
+	width: 350px;
   background:rgba(0, 0, 0, 0.9);
 }
 
@@ -117,7 +118,7 @@ select{
 	color: #fff;
 	/*color: rgb(153, 255, 204);*/
 	margin-top: 10px;
-	font-size: 22px;
+	font-size: 18px;
 	text-decoration: underline;
 	display: block;
 	/*font-weight: bold;*/
@@ -175,7 +176,7 @@ input[type="file"] {
 }
 .header-button {/*now just the title since we consolidated panels*/
 	color: #fff;
-  font-size: 36px;
+  font-size: 32px;
   width: 98.8%; /*can't figure out why 100% or fixed width doesn't line up with container */
 	background-color: #000;
 	display: inline-block;
@@ -202,7 +203,7 @@ input[type="file"] {
 	top: 5px;
 	left: 5px;
 	color: #fff;
-  font: 24px "Verdana","Courier New", Courier, monospace;
+  font: 20px "Verdana","Courier New", Courier, monospace;
 
   cursor: pointer;
   padding: 5px;
@@ -226,7 +227,7 @@ input[type="file"] {
   padding: 0px;
   /* background-color: #757575; */
   color: #fff;
-  font: 22px "Verdana","Courier New", Courier, monospace;
+  font: 20px "Verdana","Courier New", Courier, monospace;
   position: relative;
   /* top: 70px;
   left: 20px; */
