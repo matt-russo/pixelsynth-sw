@@ -5,10 +5,10 @@ Olivia Jack's [PixelSynth](https://ojack.xyz/PIXELSYNTH/), modified for Sonifica
 ## TO DO
 
 ### Functionality/Layout
-* try vertical downsizing to number of scale steps (or averaging) so data from all rows is used?
 * choose/upload new default images
 * find a way to distinguish relative major/minor scales or consolidate
 * add uploaded file to dropdown and select? (tricky)
+* record audio to mp3 (https://github.com/higuma/web-audio-recorder-js, https://blog.addpipe.com/using-webaudiorecorder-js-to-record-audio-on-your-website/)
 
 ### Accessibility
 * accessible upload link (not sure how to do this)
