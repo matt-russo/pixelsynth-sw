@@ -228,7 +228,7 @@ function initAudioCtx(){
   reverbGain.connect(audioCtx.destination);
   //gain.connect(this.ctx.destination);
   reverbGain.gain.value = settings.reverb;
-  reverbUrl = "../impulse/ArbroathAbbeySacristy.m4a";//"http://reverbjs.org/Library/AbernyteGrainSilo.m4a"; //"../impulse/ArbroathAbbeySacristy.m4a"
+  reverbUrl = "./impulse/ArbroathAbbeySacristy.m4a";//"http://reverbjs.org/Library/AbernyteGrainSilo.m4a"; //"../impulse/ArbroathAbbeySacristy.m4a"
   reverb = audioCtx.createReverbFromUrl(reverbUrl, function() {
     reverb.connect(reverbGain);
   });
