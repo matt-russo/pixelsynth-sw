@@ -50,10 +50,12 @@ Olivia Jack's [PixelSynth](https://ojack.xyz/PIXELSYNTH/), modified for Sonifica
 * added audio marker for left edge of image (called startClick)
 
 ### Other/Bugs
+* control panel is much bigger on github server than in live server, can't access all of the controls 
 * hearing some crackling artifact:
   * reducing image resolution didn't help
   * no change with p5 instead of native oscillators
   * just too many audio streams?
+* reverb impulse file not found on github server, OK on live server
 * very high freq seems too loud on nNotes>60, is this a bug?
 * get custom URL?
 * mobile version? (no sound on iOS, is audio context starting?)

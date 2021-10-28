@@ -97,7 +97,7 @@ select{
 	text-align: center;
 }
 .container-style {
-	width: 400px;
+	width: 30%;
   background:rgba(0, 0, 0, 0.9);
 }
 
@@ -223,7 +223,7 @@ input[type="file"] {
 
 /* Style the accordion panel. Note: hidden by default */
 .accordion-panel {
-  padding: 18px;
+  padding: 0px;
   /* background-color: #757575; */
   color: #fff;
   font: 22px "Verdana","Courier New", Courier, monospace;
