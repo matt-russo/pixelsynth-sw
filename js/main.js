@@ -53,7 +53,7 @@ var settings = {
 
   reverb: 0.25,
   maxGain: 0.75,
-  startClick: 0.5
+  startClick: 0.25
 };
 
 var synthObj = {};
@@ -293,6 +293,8 @@ function nextStep(){
       //val = Math.max(val,(imageCanvas.imageData[off + j*rowStep]+imageCanvas.imageData[off+1+ j*rowStep]+imageCanvas.imageData[off+2+ j*rowStep])/(255*3));
     }
 
+
+
     //0.299r + 0.587g + 0.114b //original colour weighting
     //val = settings.maxGain*(0.299*imageCanvas.imageData[off]+0.587*imageCanvas.imageData[off+1]+0.114*imageCanvas.imageData[off+2])/(255*3);
 
@@ -303,9 +305,13 @@ function nextStep(){
       // console.log(val);
       // console.log(row);
        // }
+    //if (val>1){console.log('VAL TOO HIGH',val,off,rowStep);}
+
     //playheadCtx.fillRect(col-5, row, 10, val*20);
     playheadCtx.fillRect(col-5, row - val*20/2, 10, val*20);
-    gainVals[i] = settings.maxGain*val;
+    val = Math.pow(val,1.25); // > 1 to accentuate brightest parts a bit more
+    var nNoteComp  = Math.pow(settings.scale.numSteps/10,0.5); // >0 to reduce volume a bit if there are many oscillators
+    gainVals[i] = settings.maxGain*val/nNoteComp;
        // if(val > 0) synth.playNote(i, val);
     }
   //if (col%20==0){synth.updateGains(gainVals);}; //try throlling, didn't help with artifact

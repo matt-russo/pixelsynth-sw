@@ -43,7 +43,7 @@ class Synthesizer {
     		osc.frequency.value = frequencies[frequencies.length-1-i];
     		//console.log(osc);
     		osc.start(this.ctx.currentTime);
-				var ampComp = Math.pow(frequencies[0]/osc.frequency.value,1.); //0.33 is standard correction of ELC but highs are still harsh
+				var ampComp = Math.pow(frequencies[0]/osc.frequency.value,0.75); //0.33 is standard correction of ELC but highs are still harsh
     		this.oscillators[i] = {osc: osc, gain: gain, val: 0, ampComp: ampComp};
   		}
   		//console.log(this.oscillators);, 0
