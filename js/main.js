@@ -163,8 +163,8 @@ function init(){
    setEventHandlers();
 
    document.body.onkeydown = function(e){
-     //console.log(e.keyCode + " pressed");
-     if(e.keyCode == 32 || e.keyCode == 88){ // space bar or p
+     console.log(e.keyCode + " pressed");
+     if(e.keyCode == 32 || e.keyCode == 80){ // space bar or p
        if(settings.play){
          settings.play = false;
          handleStop();
