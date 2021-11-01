@@ -51,9 +51,9 @@ var settings = {
     type: 'majorPentatonic'
   },
 
-  reverb: 0.25,
-  maxGain: 0.75,
-  startClick: 0.25
+  reverb: 0.3, //fraction of maxGain
+  maxGain: 0.3, //max gain of single oscillator
+  startClick: 0.3 //fraction of maxGain
 };
 
 var synthObj = {};
@@ -163,7 +163,7 @@ function init(){
    setEventHandlers();
 
    document.body.onkeydown = function(e){
-     console.log(e.keyCode + " pressed");
+     //console.log(e.keyCode + " pressed");
      if(e.keyCode == 32 || e.keyCode == 80){ // space bar or p
        if(settings.play){
          settings.play = false;
@@ -227,7 +227,7 @@ function initAudioCtx(){
   reverbGain = audioCtx.createGain();
   reverbGain.connect(audioCtx.destination);
   //gain.connect(this.ctx.destination);
-  reverbGain.gain.value = settings.reverb;
+  reverbGain.gain.value = settings.reverb*settings.maxGain;
   reverbUrl = "./impulse/ArbroathAbbeySacristy.m4a";//"http://reverbjs.org/Library/AbernyteGrainSilo.m4a"; //"../impulse/ArbroathAbbeySacristy.m4a"
   reverb = audioCtx.createReverbFromUrl(reverbUrl, function() {
     reverb.connect(reverbGain);
@@ -238,7 +238,7 @@ function initAudioCtx(){
   startClickGain = audioCtx.createGain();
   startClickGain.connect(audioCtx.destination);
   //gain.connect(this.ctx.destination);
-  startClickGain.gain.value = settings.startClick;
+  startClickGain.gain.value = settings.startClick*settings.maxGain;
 
   bufferLoader = new BufferLoader(audioCtx,['./sounds/startClick.mp3'],
   	function(bufferList) {
