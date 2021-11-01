@@ -51,7 +51,10 @@ Olivia Jack's [PixelSynth](https://ojack.xyz/PIXELSYNTH/), modified for Sonifica
 * added audio marker for left edge of image (called startClick)
 
 ### Other/Bugs
+* is spacebar starting play on alll browsers?
+* does speedup/down keys work when not playing on all browsers?
 * volume is much louder on Chrome than Safari, clipping even
+* maintain aspect ratio of image? 
 * hearing some crackling artifact:
   * reducing image resolution didn't help
   * no change with p5 instead of native oscillators
