@@ -6,10 +6,12 @@ Olivia Jack's [PixelSynth](https://ojack.xyz/PIXELSYNTH/), modified for Sonifica
 ## TO DO
 
 ### Functionality/Layout
-* choose/upload new default images
+* choose/upload new default images: add bar chart, line graph image defaults for testing
 * find a way to distinguish relative major/minor scales or consolidate
 * add uploaded file to dropdown and select? (tricky)
 * record audio to mp3 (https://github.com/higuma/web-audio-recorder-js, https://blog.addpipe.com/using-webaudiorecorder-js-to-record-audio-on-your-website/)
+* add volume control
+* add hint on inverting bright images
 
 ### Accessibility
 * accessible upload link (not sure how to do this)
@@ -54,7 +56,7 @@ Olivia Jack's [PixelSynth](https://ojack.xyz/PIXELSYNTH/), modified for Sonifica
 * is spacebar starting play on alll browsers?
 * does speedup/down keys work when not playing on all browsers?
 * volume is much louder on Chrome than Safari, clipping even
-* maintain aspect ratio of image? 
+* maintain aspect ratio of image?
 * hearing some crackling artifact:
   * reducing image resolution didn't help
   * no change with p5 instead of native oscillators

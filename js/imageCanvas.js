@@ -48,7 +48,14 @@ class ImageCanvas {
     	var img = new Image();
     	img.src = filename;
 			img.alt = imageName; //set this to descriptive file name
+
+
+			//console.log(imgAspect)
     	img.onload = function() {
+				// document.body.appendChild(img); // You can get the image ratio without inserting the image in body
+    		// console.log('Image ratio '+img.width/img.height);
+				// imgAspect = img.width/img.height;
+
     		this.filterCtx.drawImage(img, 0, 0, this.canvas.width, this.canvas.height);
     		this.ctx.fillStyle = "rgb(0, 0, 0)";
 	   		this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -67,6 +74,10 @@ class ImageCanvas {
 		this.filterCanvas.height = h;
 		this.filterCtx.drawImage(this.img, 0, 0, this.canvas.width, this.canvas.height);
 		this.ctx.drawImage(this.filterCanvas, 0, 0, this.canvas.width, this.canvas.height);
+
+		// this.filterCtx.drawImage(this.img, 0, 0, imgAspect*this.canvas.height, this.canvas.height);
+		// this.ctx.drawImage(this.filterCanvas, 0, 0, imgAspect*this.canvas.height, this.canvas.height);
+
 		this.getImageData(); //formerly toGreyscaale
 	}
 

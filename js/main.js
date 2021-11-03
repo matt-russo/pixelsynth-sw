@@ -8,7 +8,7 @@
 // import DrawCanvas from './drawCanvas.js';
 
 
-var synth, controls, imageCanvas, drawCanvas;
+var synth, controls, imageCanvas, drawCanvas,imgAspect;
 
 var prevTime, data;
 var colPos = 0;
@@ -50,9 +50,8 @@ var settings = {
     octave: 2,
     type: 'majorPentatonic'
   },
-
-  reverb: 0.3, //fraction of maxGain
   maxGain: 0.3, //max gain of single oscillator
+  reverb: 0.3, //fraction of maxGain
   startClick: 0.3 //fraction of maxGain
 };
 
