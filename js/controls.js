@@ -182,7 +182,7 @@ class Controls {
 		panel.className = "panel";
 	  container.appendChild(panel);
 	  this.addDial("play", "toggle", panel, this.togglePlay.bind(this));
-    this.addDial("speed", "dial", panel, this.updateSetting.bind(this), {value: this.settings.speed});
+    this.addDial("speed", "slider", panel, this.updateSetting.bind(this), {value: this.settings.speed});
     this.addDropdown(scales, panel, "scale: ", this.settings.scale.type, this.selectScale.bind(this));
     this.addDropdown(notes, panel, "start note: ", this.settings.scale.note, this.selectKey.bind(this));
     var octaves = [];
@@ -204,8 +204,8 @@ class Controls {
 	 	label.appendChild(x);
 	 	label.appendChild(span);
 	 	panel.appendChild(label);
-		this.addDial("brightness", "dial", panel, this.updateSetting.bind(this), {value: this.settings.brightness}, "calculatePixels");
-	  this.addDial("contrast", "dial", panel, this.updateSetting.bind(this), {value: this.settings.contrast}, "calculatePixels");
+		this.addDial("brightness", "slider", panel, this.updateSetting.bind(this), {value: this.settings.brightness}, "calculatePixels");
+	  this.addDial("contrast", "slider", panel, this.updateSetting.bind(this), {value: this.settings.contrast}, "calculatePixels");
     this.addDial("invert", "toggle", panel, this.updateSetting.bind(this), {value: this.settings.invert}, "invert");
 
     nx.colorize('#DB005B');
@@ -289,13 +289,19 @@ class Controls {
 			testDial.height = 56;
 			var l = label.replace(/_/g,' ');
 			this.addLabel(l, dialHolder, "dropdown-label");
-		} else {
+		} else if(type=="toggle"){
 			testDial.className = "small-canvas";
       testDial.width = 56;
 			testDial.height = 56;
 			var l = label.replace(/_/g,' ');
 			this.addLabel(l, dialHolder, "label");
-		}
+		} else {
+      testDial.className = "small-canvas";
+      testDial.width = 28;
+			testDial.height = 56;
+			var l = label.replace(/_/g,' ');
+			this.addLabel(l, dialHolder, "label");
+    }
 		testDial.setAttribute("nx", type);
 		testDial.setAttribute("label", label);
 		testDial.id = label;

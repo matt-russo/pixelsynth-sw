@@ -13,7 +13,7 @@ Olivia Jack's [PixelSynth](https://ojack.xyz/PIXELSYNTH/), modified for Sonifica
 * add volume control
 * try slider as more intuitive alternative to dials
 * redesign to maintain image aspect ratio?
-* more compact or responsive control panel so 'close controls' button doesn't get hidden
+* more compact or responsive control panel so 'close controls' button doesn't get hidden (need better way to align labels with controls)
 
 ### Accessibility
 * accessible upload link (not sure how to do this, might be OK as is)
