@@ -189,6 +189,8 @@ function init(){
        imageCanvas.brighter();
      } else if(e.keyCode == 86){ //v key (left of b)
        imageCanvas.darker();
+     } else if(e.keyCode == 72){ //h key
+       toggleHowItWorks();
      }
   }
 
