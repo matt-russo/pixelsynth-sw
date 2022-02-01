@@ -184,7 +184,7 @@ class Controls {
 	  container.appendChild(panel);
 	  this.addDial("play", "toggle", panel, this.togglePlay.bind(this));
     this.addDial("speed", "slider", panel, this.updateSetting.bind(this), {value: this.settings.speed});
-    //this.addDial("volume", "slider", panel, this.updateSetting.bind(this), {value: this.settings.maxGain});
+    this.addDial("volume", "slider", panel, this.updateSetting.bind(this), {value: this.settings.maxGain});
     this.addDropdown(scales, panel, "scale: ", this.settings.scale.type, this.selectScale.bind(this));
     this.addDropdown(notes, panel, "start note: ", this.settings.scale.note, this.selectKey.bind(this));
     var octaves = [];

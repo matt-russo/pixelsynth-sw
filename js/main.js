@@ -171,13 +171,21 @@ function init(){
          settings.play = true;
          handlePlay();
        }
-     } else if(e.keyCode == 38){ // up key
+     } else if(e.keyCode == 39){ // right arrow
        settings.speed +=0.05;
        nx.widgets["speed"].set({value: settings.speed});
-     } else if(e.keyCode == 40){ //down key
+     } else if(e.keyCode == 37){ //left arrow
        settings.speed -=0.05;
        settings.speed = Math.max(settings.speed,0);
        nx.widgets["speed"].set({value: settings.speed});
+     } else if(e.keyCode == 38){ // up arrow
+       settings.maxGain +=0.05;
+       settings.maxGain = Math.min(1, settings.maxGain);
+       nx.widgets["volume"].set({value: settings.maxGain});
+     } else if(e.keyCode == 40){ //down arrow
+       settings.maxGain -=0.05;
+       settings.maxGain = Math.max(0, settings.maxGain);
+       nx.widgets["volume"].set({value: settings.maxGain});
      } else if(e.keyCode == 73){ // i key
        imageCanvas.settings.invert = !imageCanvas.settings.invert;
        imageCanvas.invert();

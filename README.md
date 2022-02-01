@@ -5,6 +5,9 @@ Olivia Jack's [PixelSynth](https://ojack.xyz/PIXELSYNTH/), modified for Sonifica
 
 ## TO DO
 
+### MAJOR BUGS
+* sliders and toggles don't visually respond in Safari anymore (same with original pixel synth, deprecation in nexusUI?)
+
 ### Functionality/Layout
 * choose/upload new default images: add bar chart, line graph image defaults for testing
 * find a way to distinguish relative major/minor scales or consolidate
