@@ -208,6 +208,7 @@ function setEventHandlers(){
   window.addEventListener("resize", onResize);
 
   document.getElementById("how-it-works-button").addEventListener("click", toggleHowItWorks);
+  //document.getElementById("how-it-works-button").focus(); //didn't work
 }
 
 
