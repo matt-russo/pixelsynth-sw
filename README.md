@@ -40,7 +40,7 @@ Olivia Jack's [PixelSynth](https://ojack.xyz/PIXELSYNTH/), modified for Sonifica
 * averaging brightness over nearby pixels to catch bright spots in between scanning rows
 * added hexatonic scale
 * removed stylization on page title (easier for screen readers)
-* added 'how it works' button
+* added 'how it works' button and accordian panel
 * added alt text to images (same name that appears in drop down list)
 * set up key commands:
   * spacebar or p: play/pause
@@ -57,11 +57,11 @@ Olivia Jack's [PixelSynth](https://ojack.xyz/PIXELSYNTH/), modified for Sonifica
   * changed #ccc to white (on #444 for close controls text)
 * changed "Courier new" to "Verdana"
 * added audio marker for left edge of image (called startClick)
+* added volume slider
 
 ### Other/Bugs
-* is spacebar starting play on alll browsers?
+* is spacebar starting play on all browsers?
 * does speedup/down keys work when not playing on all browsers?
-* volume is much louder on Chrome than Safari, clipping even
 * hearing some crackling artifact:
   * reducing image resolution didn't help
   * no change with p5 instead of native oscillators
