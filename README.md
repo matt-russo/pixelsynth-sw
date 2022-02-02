@@ -5,15 +5,10 @@ Olivia Jack's [PixelSynth](https://ojack.xyz/PIXELSYNTH/), modified for Sonifica
 
 ## TO DO
 
-### MAJOR BUGS
-* sliders and toggles don't visually respond in Safari anymore (same with original pixel synth, deprecation in nexusUI?)
-
 ### Functionality/Layout
-* choose/upload new default images: add bar chart, line graph image defaults for testing
 * find a way to distinguish relative major/minor scales or consolidate
 * add uploaded file to dropdown and select? (tricky)
 * record audio to mp3 (https://github.com/higuma/web-audio-recorder-js, https://blog.addpipe.com/using-webaudiorecorder-js-to-record-audio-on-your-website/)
-* add volume control
 * redesign to maintain image aspect ratio?
 * more compact or responsive control panel so 'close controls' button doesn't get hidden (need better way to align labels with controls)
 
@@ -69,3 +64,4 @@ Olivia Jack's [PixelSynth](https://ojack.xyz/PIXELSYNTH/), modified for Sonifica
 * very high freq seems too loud on nNotes>60, is this a bug?
 * get custom URL?
 * mobile version? (no sound on iOS, is audio context starting?)
+* on Feb. 1, sliders and toggles didn't visually respond in Safari (same with original pixel synth, deprecation in nexusUI?), OK on Feb. 2
