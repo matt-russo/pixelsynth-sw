@@ -50,9 +50,9 @@ var settings = {
     octave: 2,
     type: 'majorPentatonic'
   },
-  maxGain: 0.3, //max gain of single oscillator
-  reverb: 0.3, //fraction of maxGain
-  startClick: 0.3 //fraction of maxGain
+  volume: 0.3, //max gain of single oscillator
+  reverb: 0.3, //fraction of volume
+  startClick: 0.3 //fraction of volume
 };
 
 var synthObj = {};
@@ -179,13 +179,13 @@ function init(){
        settings.speed = Math.max(settings.speed,0);
        nx.widgets["speed"].set({value: settings.speed});
      } else if(e.keyCode == 38){ // up arrow
-       settings.maxGain +=0.05;
-       settings.maxGain = Math.min(1, settings.maxGain);
-       nx.widgets["volume"].set({value: settings.maxGain});
+       settings.volume +=0.05;
+       settings.volume = Math.min(1, settings.volume);
+       nx.widgets["volume"].set({value: settings.volume});
      } else if(e.keyCode == 40){ //down arrow
-       settings.maxGain -=0.05;
-       settings.maxGain = Math.max(0, settings.maxGain);
-       nx.widgets["volume"].set({value: settings.maxGain});
+       settings.volume -=0.05;
+       settings.volume = Math.max(0, settings.volume);
+       nx.widgets["volume"].set({value: settings.volume});
      } else if(e.keyCode == 73){ // i key
        imageCanvas.settings.invert = !imageCanvas.settings.invert;
        imageCanvas.invert();
@@ -237,7 +237,7 @@ function initAudioCtx(){
   reverbGain = audioCtx.createGain();
   reverbGain.connect(audioCtx.destination);
   //gain.connect(this.ctx.destination);
-  reverbGain.gain.value = settings.reverb*settings.maxGain;
+  reverbGain.gain.value = settings.reverb*settings.volume;
   reverbUrl = "./impulse/ArbroathAbbeySacristy.m4a";//"http://reverbjs.org/Library/AbernyteGrainSilo.m4a"; //"../impulse/ArbroathAbbeySacristy.m4a"
   reverb = audioCtx.createReverbFromUrl(reverbUrl, function() {
     reverb.connect(reverbGain);
@@ -248,7 +248,7 @@ function initAudioCtx(){
   startClickGain = audioCtx.createGain();
   startClickGain.connect(audioCtx.destination);
   //gain.connect(this.ctx.destination);
-  startClickGain.gain.value = settings.startClick*settings.maxGain;
+  startClickGain.gain.value = settings.startClick*settings.volume;
 
   bufferLoader = new BufferLoader(audioCtx,['./sounds/startClick.mp3'],
   	function(bufferList) {
@@ -294,7 +294,7 @@ function nextStep(){
     var val=0;
 
     //using greyscale brightness of color data
-    // val = settings.maxGain*(imageCanvas.imageData[off]+imageCanvas.imageData[off+1]+imageCanvas.imageData[off+2])/(255*3);
+    // val = settings.volume*(imageCanvas.imageData[off]+imageCanvas.imageData[off+1]+imageCanvas.imageData[off+2])/(255*3);
 
     //average over nearby rows
     var rowStep = imageCanvas.canvas.width*4;
@@ -306,7 +306,7 @@ function nextStep(){
 
 
     //0.299r + 0.587g + 0.114b //original colour weighting
-    //val = settings.maxGain*(0.299*imageCanvas.imageData[off]+0.587*imageCanvas.imageData[off+1]+0.114*imageCanvas.imageData[off+2])/(255*3);
+    //val = settings.volume*(0.299*imageCanvas.imageData[off]+0.587*imageCanvas.imageData[off+1]+0.114*imageCanvas.imageData[off+2])/(255*3);
 
 
     //using one element of greyscale data + draw canvas
@@ -321,7 +321,7 @@ function nextStep(){
     playheadCtx.fillRect(col-5, row - val*20/2, 10, val*20);
     val = Math.pow(val,1.25); // > 1 to accentuate brightest parts a bit more
     var nNoteComp  = Math.pow(settings.scale.numSteps/10,0.5); // >0 to reduce volume a bit if there are many oscillators
-    gainVals[i] = settings.maxGain*val/nNoteComp;
+    gainVals[i] = controls.settings.volume*val/nNoteComp;
        // if(val > 0) synth.playNote(i, val);
     }
   //if (col%20==0){synth.updateGains(gainVals);}; //try throlling, didn't help with artifact
