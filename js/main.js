@@ -50,7 +50,7 @@ var settings = {
     octave: 2,
     type: 'majorPentatonic'
   },
-  volume: 0.3, //max gain of single oscillator
+  volume: 0.5, //max gain of single oscillator
   reverb: 0.3, //fraction of volume
   startClick: 0.3 //fraction of volume
 };
