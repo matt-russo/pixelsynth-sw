@@ -52,7 +52,6 @@ Olivia Jack's [PixelSynth](https://ojack.xyz/PIXELSYNTH/), modified for Sonifica
   * changed #ccc to white (on #444 for close controls text)
 * changed "Courier new" to "Verdana"
 * added audio marker for left edge of image (called startClick)
-* added volume slider
 
 ### Other/Bugs
 * is spacebar starting play on all browsers?
