@@ -13,19 +13,33 @@ Olivia Jack's [PixelSynth](https://ojack.xyz/PIXELSYNTH/), modified for Sonifica
 * more compact or responsive control panel so 'close controls' button doesn't get hidden (need better way to align labels with controls)
 
 ### Accessibility
-* move focus to button with tab (not working in safari)
-* accessible upload link (not sure how to do this, might be OK as is)
+* test with screen readers: works in NVDA and Chrome on PC, doesn't work with JAWS, need test with VoiceOver on Mac
+* move focus to 'How it works' button with tab (working in Chrome/Firefox, not working in safari)
+* keyboard command to reset scanner at start?
 * research other requirements
   * ARIA: https://www.deque.com/blog/a11y-support-series-part-1-aria-tab-panel-accessibility/
   * contrast ratio > 4.5:1 for normal text, 3:1 for >18px fontsize (https://webaim.org/resources/contrastchecker/)
 
-### Completed modifications
+### Other/Bugs
+* scanner gets stuck after changing 'number of notes' (need to refresh or change N notes, pause and play again)
+* with NVDA: unlabeled clickable graphic below play, activated with enter key (what is it?)
+* does speedup/down keys work when not playing on all browsers?
+* hearing some crackling artifact:
+  * reducing image resolution didn't help
+  * no change with p5 instead of native oscillators
+  * just too many audio streams?
+* very high freq seems too loud on nNotes>60, is this a bug?
+* get custom URL?
+* mobile version? (no sound on iOS, is audio context starting?)
+* on Feb. 1, sliders and toggles didn't visually respond in Safari (same with original pixel synth, deprecation in nexusUI?), OK on Feb. 2
+
+## Completed modifications
 * default play mode is now set to 'off'
 * removed draw canvas, disabled draw control and event handlers
-* Image Control: removed repetitions, spacing, offset, clearbackground, rotation
+* Image Control: removed repetitions, spacing, offset, clear background, rotation
 * maintain colour images (changed toGreyscale to getImageData) (not using colour but could think about a colour mode)
 * alternate default note choices (more limited starting range)
-* amplitude compensation to reduce ammount of higher frequencies
+* amplitude compensation to reduce amount of higher frequencies
 * added convolution reverb
 * enlarged and centered indicators on playhead
 * removed landing page (so no mouse click is required to start)
@@ -52,15 +66,3 @@ Olivia Jack's [PixelSynth](https://ojack.xyz/PIXELSYNTH/), modified for Sonifica
   * changed #ccc to white (on #444 for close controls text)
 * changed "Courier new" to "Verdana"
 * added audio marker for left edge of image (called startClick)
-
-### Other/Bugs
-* is spacebar starting play on all browsers?
-* does speedup/down keys work when not playing on all browsers?
-* hearing some crackling artifact:
-  * reducing image resolution didn't help
-  * no change with p5 instead of native oscillators
-  * just too many audio streams?
-* very high freq seems too loud on nNotes>60, is this a bug?
-* get custom URL?
-* mobile version? (no sound on iOS, is audio context starting?)
-* on Feb. 1, sliders and toggles didn't visually respond in Safari (same with original pixel synth, deprecation in nexusUI?), OK on Feb. 2
