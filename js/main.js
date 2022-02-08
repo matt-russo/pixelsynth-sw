@@ -178,15 +178,16 @@ function init(){
        settings.speed -=0.05;
        settings.speed = Math.max(settings.speed,0);
        nx.widgets["speed"].set({value: settings.speed});
-     } else if(e.keyCode == 38){ // up arrow
-       settings.volume +=0.05;
-       settings.volume = Math.min(1, settings.volume);
-       nx.widgets["volume"].set({value: settings.volume});
-     } else if(e.keyCode == 40){ //down arrow
-       settings.volume -=0.05;
-       settings.volume = Math.max(0, settings.volume);
-       nx.widgets["volume"].set({value: settings.volume});
-     } else if(e.keyCode == 73){ // i key
+     // } else if(e.keyCode == 38){ // up arrow
+     //   settings.volume +=0.05;
+     //   settings.volume = Math.min(1, settings.volume);
+     //   nx.widgets["volume"].set({value: settings.volume});
+     // } else if(e.keyCode == 40){ //down arrow
+     //   settings.volume -=0.05;
+     //   settings.volume = Math.max(0, settings.volume);
+     //   nx.widgets["volume"].set({value: settings.volume});
+     //
+    } else if(e.keyCode == 73){ // i key
        imageCanvas.settings.invert = !imageCanvas.settings.invert;
        imageCanvas.invert();
      } else if(e.keyCode == 67){ //c key
