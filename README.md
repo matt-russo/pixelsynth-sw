@@ -13,15 +13,21 @@ Olivia Jack's [PixelSynth](https://ojack.xyz/PIXELSYNTH/), modified for Sonifica
 * more compact or responsive control panel so 'close controls' button doesn't get hidden (need better way to align labels with controls)
 
 ### Accessibility
+* play indicator and sliders aren't visible on screen readers since they're canvases created with nexusUI (recreate with normal buttons and sliders?)
+* up/down left/right have dual assignments for screenreaders, depending on focus, may need very different solution
+* speed control not reliable on some browsers? getting stuck, not able to increase
+* set to scan only once and then stop?
+* audio feedback for toggles and slider increments?
 * test with screen readers: works in NVDA and Chrome on PC, doesn't work with JAWS, need test with VoiceOver on Mac
 * move focus to 'How it works' button with tab (working in Chrome/Firefox, not working in safari)
-* keyboard command to reset scanner at start?
+* keyboard command to reset scanner at start? or only scan once?
+* JAWS: need to press control-spacebar-p on Firefox (probably Chrome too), but control-p brings up print dialog
 * research other requirements
   * ARIA: https://www.deque.com/blog/a11y-support-series-part-1-aria-tab-panel-accessibility/
   * contrast ratio > 4.5:1 for normal text, 3:1 for >18px fontsize (https://webaim.org/resources/contrastchecker/)
 
 ### Other/Bugs
-* scanner gets stuck after changing 'number of notes' (need to refresh or change N notes, pause and play again)
+* scanner gets stuck after changing 'number of notes' (need to refresh or change N notes, pause and play again) on Chrome + Windows
 * with NVDA: unlabeled clickable graphic below play, activated with enter key (what is it?)
 * does speedup/down keys work when not playing on all browsers?
 * hearing some crackling artifact:
