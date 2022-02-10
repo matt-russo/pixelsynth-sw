@@ -12,7 +12,7 @@ var synth, controls, imageCanvas, drawCanvas,imgAspect;
 
 var prevTime, data;
 var colPos = 0;
-var isPlaying = false;
+// var isPlaying = false;
 
 
 
@@ -52,13 +52,13 @@ var settings = {
   },
   volume: 0.5, //max gain of single oscillator
   reverb: 0.3, //fraction of volume
-  startClick: 0.3 //fraction of volume
+  startClick: 0.3, //fraction of volume
+  loopMode:false
 };
 
 var synthObj = {};
 //var numSteps = 30;
 
-//var isPlaying = false;
 
 
 var scaleFrequencies;
@@ -200,6 +200,8 @@ function init(){
        imageCanvas.darker();
      } else if(e.keyCode == 72){ //h key
        toggleHowItWorks();
+     } else if (e.keyCode == 76) {
+       settings.loopMode=!settings.loopMode;
      }
   }
 
@@ -268,68 +270,88 @@ function initAudioCtx(){
 }
 
 function nextStep(){
+  if (colPos==0) playSound(audioCtx,startClickBuffer, startClickGain);
   //var col = Math.floor(audioCtx.currentTime*settings.speed);
   //var step = Math.floor((audioCtx.currentTime - prevTime)*(settings.speed*400-200));
   var step = Math.floor((audioCtx.currentTime - prevTime)*(settings.speed*700)); //so minimum speed is 0
   var col = colPos + step;
+  var gainVals = [];
+
   if(col>=imageCanvas.canvas.width){
-    while(col>=imageCanvas.canvas.width){
-      col-=imageCanvas.canvas.width;
-      //trigger sound to indicate start here
+    if (settings.loopMode==false){
+      settings.play = false;
+      for(var i = 0; i < settings.scale.numSteps; i++){
+        gainVals[i] = 0;
+      }
+      synth.updateGains(gainVals);
+      col = 0;
+      //trigger sound to indicate right edge
       playSound(audioCtx,startClickBuffer, startClickGain);
     }
+    else{
+      while(col>=imageCanvas.canvas.width){
+        col-=imageCanvas.canvas.width;
+        //trigger sound to indicate start here
+        playSound(audioCtx,startClickBuffer, startClickGain);
+      }
+    }
   }
-  if(col < 0) col+=imageCanvas.canvas.width;
+  //if(col < 0) col+=imageCanvas.canvas.width;
+  if(col < 0) col=0;
 
   playheadCtx.clearRect(0, 0, playheadCanvas.width, playheadCanvas.height);
   playheadCtx.fillStyle = "rgba(219, 0, 91, 1)";
   playheadCtx.fillRect(col-5, 0, 10, imageCanvas.canvas.height);
   playheadCtx.fillStyle = "rgba(153, 255, 204, 1)";
 
-  var rowRange = Math.floor(imageCanvas.canvas.height/settings.scale.numSteps/2); // divide by 2 to cover all area
-
-  var gainVals = [];
-  for(var i = 0; i < settings.scale.numSteps; i++){
-    var row = Math.floor((i+0.5)*imageCanvas.canvas.height/settings.scale.numSteps);
-    var off = (row*imageCanvas.canvas.width+col)*4;
-    var val=0;
-
-    //using greyscale brightness of color data
-    // val = settings.volume*(imageCanvas.imageData[off]+imageCanvas.imageData[off+1]+imageCanvas.imageData[off+2])/(255*3);
-
-    //average over nearby rows
-    var rowStep = imageCanvas.canvas.width*4;
-    for (let j=-rowRange;j<=rowRange;j++){
-      val += (imageCanvas.imageData[off + j*rowStep]+imageCanvas.imageData[off+1+ j*rowStep]+imageCanvas.imageData[off+2+ j*rowStep])/(255*3)/(2*rowRange+1);
-      //val = Math.max(val,(imageCanvas.imageData[off + j*rowStep]+imageCanvas.imageData[off+1+ j*rowStep]+imageCanvas.imageData[off+2+ j*rowStep])/(255*3));
-    }
+  if (settings.play===true) {
+    var rowRange = Math.floor(imageCanvas.canvas.height/settings.scale.numSteps/2); // divide by 2 to cover all area
 
 
+    for(var i = 0; i < settings.scale.numSteps; i++){
+      var row = Math.floor((i+0.5)*imageCanvas.canvas.height/settings.scale.numSteps);
+      var off = (row*imageCanvas.canvas.width+col)*4;
+      var val=0;
 
-    //0.299r + 0.587g + 0.114b //original colour weighting
-    //val = settings.volume*(0.299*imageCanvas.imageData[off]+0.587*imageCanvas.imageData[off+1]+0.114*imageCanvas.imageData[off+2])/(255*3);
+      //using greyscale brightness of color data
+      // val = settings.volume*(imageCanvas.imageData[off]+imageCanvas.imageData[off+1]+imageCanvas.imageData[off+2])/(255*3);
+
+      //average over nearby rows
+      var rowStep = imageCanvas.canvas.width*4;
+      for (let j=-rowRange;j<=rowRange;j++){
+        val += (imageCanvas.imageData[off + j*rowStep]+imageCanvas.imageData[off+1+ j*rowStep]+imageCanvas.imageData[off+2+ j*rowStep])/(255*3)/(2*rowRange+1);
+        //val = Math.max(val,(imageCanvas.imageData[off + j*rowStep]+imageCanvas.imageData[off+1+ j*rowStep]+imageCanvas.imageData[off+2+ j*rowStep])/(255*3));
+      }
 
 
-    //using one element of greyscale data + draw canvas
-    //val = (imageCanvas.imageData[off]+drawCanvas.imageData[off]*(drawCanvas.imageData[off+3]/255))/255;
-    //val = (imageCanvas.imageData[off])/255;
-      // console.log(val);
-      // console.log(row);
-       // }
-    //if (val>1){console.log('VAL TOO HIGH',val,off,rowStep);}
 
-    //playheadCtx.fillRect(col-5, row, 10, val*20);
-    playheadCtx.fillRect(col-5, row - val*20/2, 10, val*20);
-    val = Math.pow(val,1.25); // > 1 to accentuate brightest parts a bit more
-    var nNoteComp  = Math.pow(settings.scale.numSteps/10,0.5); // >0 to reduce volume a bit if there are many oscillators
-    gainVals[i] = controls.settings.volume*val/nNoteComp;
-       // if(val > 0) synth.playNote(i, val);
-    }
-  //if (col%20==0){synth.updateGains(gainVals);}; //try throlling, didn't help with artifact
-  //synth.updateGains(gainVals);
-  if (settings.play===true) {synth.updateGains(gainVals)};
-  //if (settings.play===true) {synth.updateP5Gains(gainVals);};
-  requestId = requestAnimationFrame(nextStep);
+      //0.299r + 0.587g + 0.114b //original colour weighting
+      //val = settings.volume*(0.299*imageCanvas.imageData[off]+0.587*imageCanvas.imageData[off+1]+0.114*imageCanvas.imageData[off+2])/(255*3);
+
+
+      //using one element of greyscale data + draw canvas
+      //val = (imageCanvas.imageData[off]+drawCanvas.imageData[off]*(drawCanvas.imageData[off+3]/255))/255;
+      //val = (imageCanvas.imageData[off])/255;
+        // console.log(val);
+        // console.log(row);
+         // }
+      //if (val>1){console.log('VAL TOO HIGH',val,off,rowStep);}
+
+      //playheadCtx.fillRect(col-5, row, 10, val*20);
+      playheadCtx.fillRect(col-5, row - val*20/2, 10, val*20);
+      val = Math.pow(val,1.25); // > 1 to accentuate brightest parts a bit more
+      var nNoteComp  = Math.pow(settings.scale.numSteps/10,0.5); // >0 to reduce volume a bit if there are many oscillators
+      gainVals[i] = controls.settings.volume*val/nNoteComp;
+         // if(val > 0) synth.playNote(i, val);
+      }
+    //if (col%20==0){synth.updateGains(gainVals);}; //try throlling, didn't help with artifact
+    //synth.updateGains(gainVals);
+    synth.updateGains(gainVals)
+    // if (settings.play===true) {synth.updateGains(gainVals)};
+    //if (settings.play===true) {synth.updateP5Gains(gainVals);};
+    requestId = requestAnimationFrame(nextStep);
+  }
+
   colPos = col;
   prevTime = audioCtx.currentTime;
 }
@@ -383,6 +405,7 @@ function onResize(){
 // function handleTouchCancel(e) {
 //
 // }
+
 
 function toggleHowItWorks(){
   /* Toggle between adding and removing the "active" class,

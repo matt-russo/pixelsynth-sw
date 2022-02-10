@@ -19,7 +19,8 @@ class ImageCanvas {
 	  this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 	  //this.ctx = ctx;
 	  document.body.appendChild(this.canvas);
-	  this.loadImage("./images/galactic_xray.jpg","galactic - xray");
+	  this.loadImage("./images/"+images[0].value,images[0].altText);
+		//"X-ray image of the galactic core taken by the Chandra X-Ray Telescope"
 	}
 
 

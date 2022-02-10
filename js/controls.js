@@ -1,21 +1,21 @@
 var images=[
-{name: "galactic (xray)", value: "galactic_xray.jpg"},
-{name: "galactic (optical)", value: "galactic_optical.jpg"},
-{name: "galactic (infrared)", value: "galactic_ir.jpg"},
-{name: "bar graph", value: "exoplanetDetectionsByYear.jpg"},
-{name: "scatter plot", value: "trappistLightCurve-single.jpg"},
-{name: "stacked scatter plots", value: "trappistLightCurves.jpg"},
-{name: "skyline", value: "skyline.png"},
-{name: "stairway", value: "stairway.png"},
-{name: "night sky", value: "nightsky.jpg"},
-{name: "moire", value: "moire2.jpg"},
-{name: "swoosh", value: "swoosh.jpeg"},
-{ name: "contour", value: "contour.jpg"},
-{ name: "bird", value: "bird.png"},
-{ name: "dots", value: "newsdots.jpg"},
-{ name: "basquiat", value: "basquiat.jpg"},
-{ name: "keith haring", value: "haring2.jpeg"},
-{ name: "maze", value: "maze.png"}
+{name: "galactic (xray)", value: "galactic_xray.jpg",altText: "X-ray image of the galactic core taken by the Chandra X-Ray Telescope"},
+{name: "galactic (optical)", value: "galactic_optical.jpg",altText: "Optical image of the galactic core taken by the Hubble Space Telescope"},
+{name: "galactic (infrared)", value: "galactic_ir.jpg",altText: "Infrared image of the galactic core taken by the Spitzer Telescope"},
+// {name: "bar graph", value: "exoplanetDetectionsByYear.jpg"},
+// {name: "scatter plot", value: "trappistLightCurve-single.jpg"},
+// {name: "stacked scatter plots", value: "trappistLightCurves.jpg"},
+{name: "skyline", value: "skyline.png",altText: "Skyline of city buildings on the edge of the water"},
+{name: "stairway", value: "stairway.png",altText: "Looking down the middle of a rectangular spiral staircase"},
+{name: "night sky", value: "nightsky.jpg",altText: "Artistic rendering of stars and a full moon above cloud tops"},
+{name: "moire", value: "moire2.jpg",altText: "Abstract moire patter of curving lines"},
+{name: "swoosh", value: "swoosh.jpeg",altText: "Vertical and bending lines, simialr to a fingerprint"},
+{ name: "contour", value: "contour.jpg",altText: "Abstract line art in bottom half"},
+{ name: "bird", value: "bird.png",altText: "Geometric bird art with wings on each side"},
+{ name: "dots", value: "newsdots.jpg",altText: "Grid of white dots, getting bigger toward the bottom"},
+{ name: "basquiat", value: "basquiat.jpg",altText: "Basquiat line drawing with test and crown shape"},
+{ name: "keith haring", value: "haring2.jpeg",altText: "Keith Haring art with 3 and a half figrues on bottom and signature on top left"},
+{ name: "maze", value: "maze.png",altText: "Maze made of up vertical and horizontal lines"}
 //{name: "text", value: "text.png"} //missing file
 ];
 
@@ -330,7 +330,7 @@ class Controls {
 		   	if(options[i].value){
 		   		op.value = options[i].value;
 		   		op.text = options[i].name;
-          op.alt = options[i].name;
+          op.alt = options[i].altText;
 		   	}else{
 		   		op.value = options[i];
 		   		op.text = options[i];

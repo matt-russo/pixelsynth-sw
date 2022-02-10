@@ -15,8 +15,9 @@ select{
 	/*border-color: rgb(153, 255, 204);*/
 	margin-top: 3px;
 }
+
 .label{
-	width: 80px;
+	width: 10%; /* 80px */
 	/*height: 20px
 	font-weight: bold;*/
 	text-align: center;
@@ -27,7 +28,7 @@ select{
   /* margin-left: 75px; */
 		   /* word-wrap: break-word;*/
   margin-left: auto;
-  margin-left: 50px;
+  margin-left: 50px; /* 50px */
 }
 
 #close-button{
@@ -37,12 +38,11 @@ select{
 	padding: 5px;
 	font-size: 18px;
 }
-
 #close-button:hover{
 	background-color: #DB005B;
 }
-.small-canvas{
 
+.small-canvas{
   margin-top: 5px;
 	margin-left: 65px;
   /* margin: auto; */
@@ -86,10 +86,10 @@ select{
 #link{
 	color: rgb(153, 255, 204);
 }
-
 #link:hover{
 	color: #DB005B;
 }
+
 .dropdown-label{
 	font-size: 12px;
 	color: #fff;
@@ -97,9 +97,11 @@ select{
 	margin-top: 10px;
 	text-align: center;
 }
-.container-style {
-	width: 330px;
-  background:rgba(0, 0, 0, 0.9);
+
+.container-style { /*control panel*/
+	width: 30%; /*330px */
+  background:rgba(0, 0, 0, 0.8);
+
 }
 
 .panel{
@@ -109,23 +111,17 @@ select{
 	border-color: #757575;
 	display: block;
 }
-
 .panel.hide{
 	display: none;
 }
 
 .upload-container{
 	color: #fff;
-	/*color: rgb(153, 255, 204);*/
 	margin-top: 10px;
 	font-size: 18px;
 	text-decoration: underline;
 	display: block;
-	/*font-weight: bold;*/
 	margin-bottom: 15px;
-	/*background-color: rgb(153, 255, 204);
-	margin: 2px;
-	padding: 10px 20px 10px 20px;*/
 }
 
 .upload-container:hover{
@@ -141,9 +137,9 @@ input[type="file"] {
 }
 
 .container-style{
-	top: 10px;
-	position: fixed;
-	right: 10px;
+	top: 1%;
+	position: absolute;
+	right: 0.8%;
 	-webkit-transition: top 500ms;
     transition: top 500ms;
 }
@@ -177,7 +173,7 @@ input[type="file"] {
 .header-button {/*now just the title since we consolidated panels*/
 	color: #fff;
   font-size: 32px;
-  width: 98.8%; /*can't figure out why 100% or fixed width doesn't line up with container */
+  width: 100%;
 	background-color: #000;
 	display: inline-block;
 	line-height: 40px;
@@ -190,14 +186,15 @@ input[type="file"] {
 
 .header-button.selected{ /*now just the title since we consolidated panels*/
 	background-color: #DB005B;
-	border-width: 3px 3px 0px 3px;
+  border-width: 0px;
 }
 
 
 
 /* Style the buttons that are used to open and close the accordion panel */
 .accordion {
-  background-color: #757575;
+  /* background-color: #757575; */
+  background-color: rgba(117,117,117, 0.8);
 
   position: fixed;
 	top: 5px;
@@ -207,9 +204,9 @@ input[type="file"] {
 
   cursor: pointer;
   padding: 5px;
-  width: 230px;
+  width: 20%; /* 230px*/
   text-align: center;
-  border: 2px solid #757575;
+  border: 2px solid rgba(117,117,117, 1);;
   outline: none;
   transition: 0.4s;
   z-index: 300;

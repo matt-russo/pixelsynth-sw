@@ -11,10 +11,12 @@ Olivia Jack's [PixelSynth](https://ojack.xyz/PIXELSYNTH/), modified for Sonifica
 * record audio to mp3 (https://github.com/higuma/web-audio-recorder-js, https://blog.addpipe.com/using-webaudiorecorder-js-to-record-audio-on-your-website/)
 * redesign to maintain image aspect ratio?
 * more compact or responsive control panel so 'close controls' button doesn't get hidden (need better way to align labels with controls)
+* indicate file types that can be uploaded? (png, jpg only?)
+* button and/or key command to return to default settings?
 
 ### Accessibility
 * play indicator and sliders aren't visible on screen readers since they're canvases created with nexusUI (recreate with normal buttons and sliders?)
-* up/down left/right have dual assignments for screenreaders, depending on focus, may need very different solution
+* up/down left/right have dual assignments for screenreaders, depending on focus, may need very different solution (removed up/down for now)
 * speed control not reliable on some browsers? getting stuck, not able to increase
 * set to scan only once and then stop?
 * audio feedback for toggles and slider increments?
@@ -66,9 +68,12 @@ Olivia Jack's [PixelSynth](https://ojack.xyz/PIXELSYNTH/), modified for Sonifica
   * b : brighter
   * v : darker (chose v since it's beside b)
   * h : open/close 'how it works' box
+  * l: toggle loop mode
 * increasing colour contrasts
   * changed #444 to #757575 to reach minimum colour contrast with white and black
   * changed #FO6 to #DB005B to reach minimum colour contrast with white
   * changed #ccc to white (on #444 for close controls text)
 * changed "Courier new" to "Verdana"
 * added audio marker for left edge of image (called startClick)
+* added more descriptive alt text to images (need to test)
+* added key command to toggle loopmode (starts with loopMode off)
