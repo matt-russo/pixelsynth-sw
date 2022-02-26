@@ -53,7 +53,7 @@ var settings = {
   volume: 0.5, //max gain of single oscillator
   reverb: 0.3, //fraction of volume
   startClick: 0.3, //fraction of volume
-  loopMode:false
+  loop:false
 };
 
 var synthObj = {};
@@ -169,20 +169,7 @@ function init(){
    document.body.onkeydown = function(e){
      //console.log(e.keyCode + " pressed");
      if(e.keyCode == 80){ // p, space bar is e.keyCode == 32 ||
-       var playButton = document.getElementById("play-button");
-       if(settings.play){
-         settings.play = false;
-         handleStop();
-         playButton.innerHTML="off";  //duplicate code in controls, should consolidate
-         playButton.style.background = "#757575";
-         playButton.style.color = "black";
-       } else {
-         settings.play = true;
-         handlePlay();
-         playButton.innerHTML="on";
-         playButton.style.background = "#DB005B";
-         playButton.style.color = "white";
-       }
+       controls.togglePlay();
      } else if(e.keyCode == 39){ // right arrow
        settings.speed +=0.05;
        //nx.widgets["speed"].set({value: settings.speed});
@@ -297,7 +284,7 @@ function nextStep(){
   var gainVals = [];
 
   if(col>=imageCanvas.canvas.width){
-    if (settings.loopMode==false){
+    if (settings.loop==false){
       settings.play = false;
       for(var i = 0; i < settings.scale.numSteps; i++){
         gainVals[i] = 0;

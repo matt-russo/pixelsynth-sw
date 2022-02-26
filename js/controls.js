@@ -175,64 +175,44 @@ class Controls {
     //this.addToggle("invert", panel, this.updateSetting.bind(this), {value: this.settings.invert}, "invert");
     this.addToggle("invert", panel, this.updateSetting2.bind(this),"off","invert");
 
-    nx.colorize('#DB005B');
-		nx.colorize("fill", "#757575");
+    //nx.colorize('#DB005B');
+		//nx.colorize("fill", "#757575");
     panelElements.push(panel);
   }
 
+  updateButtonStyle(label,setting){
+    var button = document.getElementById(label+"-button");
+		if(setting){
+      button.innerHTML="on";
+      button.style.background = "#DB005B";
+      button.style.color = "white";
+		} else {
+      button.innerHTML="off";
+      button.style.background = "#757575";
+      button.style.color = "black";
+		}
+	}
 
 	togglePlay(){
     var playButton = document.getElementById("play-button");
 		if(this.settings.play){
 			this.handleStop();
-      playButton.innerHTML="off";
-      playButton.style.background = "#757575";
-      playButton.style.color = "black";
 		} else {
 			this.handlePlay();
-      playButton.innerHTML="on";
-      playButton.style.background = "#DB005B";
-      playButton.style.color = "white";
 		}
+    this.updateButtonStyle("play",this.settings.play);
 	}
 
   toggleLoop() {
-    var loopButton = document.getElementById("loop-button");
-		if(this.settings.loopMode){
-			//this.handleStop();
-      loopButton.innerHTML="off";
-      loopButton.style.background = "#757575";
-      loopButton.style.color = "black";
-		} else {
-			//this.handlePlay();
-      loopButton.innerHTML="on";
-      loopButton.style.background = "#DB005B";
-      loopButton.style.color = "white";
-		}
-    this.settings.loopMode=!this.settings.loopMode;
+    this.settings.loop=!this.settings.loop;
+    this.updateButtonStyle("loop",this.settings.loop);
   }
 
   toggleInvert(){
-    var invertButton = document.getElementById("invert-button");
-    if(this.settings.invert){
-      //this.handleStop();
-      invertButton.innerHTML="off";
-      invertButton.style.background = "#757575";
-      invertButton.style.color = "black";
-    } else {
-      //this.handlePlay();
-      invertButton.innerHTML="on";
-      invertButton.style.background = "#DB005B";
-      invertButton.style.color = "white";
-    }
     this.settings.invert=!this.settings.invert;
-    // console.log('toggled invert');
-    // console.log(this.settings.invert);
+    this.updateButtonStyle("invert",this.settings.invert);
   }
 
-	toggleDraw(){
-
-	}
 
 	handleMenuChange(e){
 		//console.log(e.target);
@@ -302,7 +282,7 @@ class Controls {
     dialHolder.style.marginLeft = "30px";
     var testDial = document.createElement('button');
 
-    testDial.className = "toggle-button";
+    testDial.className = "button";
     // testDial.width = 26;
     // testDial.height = 26;
     testDial.innerHTML=startVal;

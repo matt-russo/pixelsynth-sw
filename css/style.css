@@ -16,7 +16,7 @@ select{
 	margin-top: 3px;
 }
 
-.toggle-button{
+.button{
   background-color: #757575;
   border: none;
   color: black;
@@ -39,6 +39,7 @@ select{
   height: 25px;
   position: relative;
   top: 5px;
+  left: 5px;
   margin-top: 10px;
   margin-bottom: 20px;
   background: #757575;
@@ -51,21 +52,21 @@ select{
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 25px;
+  width: 15px;
   height: 25px;
   background: #DB005B;
   cursor: pointer;
 }
 
 .slider::-moz-range-thumb {
-  width: 25px;
+  width: 15px;
   height: 25px;
   background: #DB005B;
   cursor: pointer;
 }
 
 .label{
-	width: 10%; /* 80px */
+	/* width: 10%; /* 80px */
 	/*height: 20px
 	font-weight: bold;*/
 	text-align: center;

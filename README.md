@@ -11,18 +11,13 @@ Olivia Jack's [PixelSynth](https://ojack.xyz/PIXELSYNTH/), modified for Sonifica
 * record audio to mp3 (https://github.com/higuma/web-audio-recorder-js, https://blog.addpipe.com/using-webaudiorecorder-js-to-record-audio-on-your-website/)
 * redesign to maintain image aspect ratio?
 * more compact or responsive control panel so 'close controls' button doesn't get hidden (need better way to align labels with controls)
-* indicate file types that can be uploaded? (png, jpg only?)
 * button and/or key command to return to default settings?
 
 ### Accessibility
-* play indicator and sliders aren't visible on screen readers since they're canvases created with nexusUI (recreate with normal buttons and sliders?)
-* up/down left/right have dual assignments for screenreaders, depending on focus, may need very different solution (removed up/down for now)
 * speed control not reliable on some browsers? getting stuck, not able to increase
-* set to scan only once and then stop?
 * audio feedback for toggles and slider increments?
 * test with screen readers: works in NVDA and Chrome on PC, doesn't work with JAWS, need test with VoiceOver on Mac
 * move focus to 'How it works' button with tab (working in Chrome/Firefox, not working in safari)
-* keyboard command to reset scanner at start? or only scan once?
 * JAWS: need to press control-spacebar-p on Firefox (probably Chrome too), but control-p brings up print dialog
 * research other requirements
   * ARIA: https://www.deque.com/blog/a11y-support-series-part-1-aria-tab-panel-accessibility/
@@ -39,7 +34,7 @@ Olivia Jack's [PixelSynth](https://ojack.xyz/PIXELSYNTH/), modified for Sonifica
 * very high freq seems too loud on nNotes>60, is this a bug?
 * get custom URL?
 * mobile version? (no sound on iOS, is audio context starting?)
-* on Feb. 1, sliders and toggles didn't visually respond in Safari (same with original pixel synth, deprecation in nexusUI?), OK on Feb. 2
+* on Feb. 1, nexus sliders and toggles didn't visually respond in Safari (same with original pixel synth, deprecation in nexusUI?), OK on Feb. 2
 
 ## Completed modifications
 * default play mode is now set to 'off'
@@ -60,15 +55,16 @@ Olivia Jack's [PixelSynth](https://ojack.xyz/PIXELSYNTH/), modified for Sonifica
 * added 'how it works' button and accordian panel
 * added alt text to images (same name that appears in drop down list)
 * set up key commands:
-  * spacebar or p: play/pause
+  * p: play/pause
   * up-down arrows: faster-slower
+  * l: toggle loop mode
   * i : invert image (would n be better? beside the other commands)
   * c: increase contrast
   * x : decrease decrease contrast
   * b : brighter
   * v : darker (chose v since it's beside b)
   * h : open/close 'how it works' box
-  * l: toggle loop mode
+
 * increasing colour contrasts
   * changed #444 to #757575 to reach minimum colour contrast with white and black
   * changed #FO6 to #DB005B to reach minimum colour contrast with white
@@ -76,4 +72,5 @@ Olivia Jack's [PixelSynth](https://ojack.xyz/PIXELSYNTH/), modified for Sonifica
 * changed "Courier new" to "Verdana"
 * added audio marker for left edge of image (called startClick)
 * added more descriptive alt text to images (need to test)
-* added key command to toggle loopmode (starts with loopMode off)
+* added button and key command to toggle loop (starts with loop off)
+* replaced NEXUS canvas buttons and sliders with native buttons and sliders which are tab-accessible
