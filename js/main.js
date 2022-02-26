@@ -86,7 +86,9 @@ window.onload = function(){
 function handlePlay(){
  prevTime = audioCtx.currentTime;
  settings.play = true;
- nx.widgets["play"].set({value: settings.play});
+
+ //nx.widgets["play"].set({value: settings.play});
+
  if (firstPlay){
    playSound(audioCtx,startClickBuffer, startClickGain);
    firstPlay=false;}
@@ -111,7 +113,8 @@ function regenerateSynth(){
 
 function handleStop(){
   settings.play = false;
-  nx.widgets["play"].set({value: settings.play});
+  //nx.widgets["play"].set({value: settings.play});
+
   //native oscillaators
   if(audioCtx.suspend){
    // audioCtx.resume();
@@ -161,23 +164,34 @@ function init(){
    controls = new Controls(imageCanvas, drawCanvas, settings, handlePlay, handleStop, regenerateSynth);
    setEventHandlers();
 
+   controls.updateSlider('speed'); //to override slider starting at 50%
+
    document.body.onkeydown = function(e){
      //console.log(e.keyCode + " pressed");
-     if(e.keyCode == 32 || e.keyCode == 80){ // space bar or p
+     if(e.keyCode == 80){ // p, space bar is e.keyCode == 32 ||
+       var playButton = document.getElementById("play-button");
        if(settings.play){
          settings.play = false;
          handleStop();
+         playButton.innerHTML="off";  //duplicate code in controls, should consolidate
+         playButton.style.background = "#757575";
+         playButton.style.color = "black";
        } else {
          settings.play = true;
          handlePlay();
+         playButton.innerHTML="on";
+         playButton.style.background = "#DB005B";
+         playButton.style.color = "white";
        }
      } else if(e.keyCode == 39){ // right arrow
        settings.speed +=0.05;
-       nx.widgets["speed"].set({value: settings.speed});
+       //nx.widgets["speed"].set({value: settings.speed});
+       controls.updateSlider('speed');
      } else if(e.keyCode == 37){ //left arrow
        settings.speed -=0.05;
        settings.speed = Math.max(settings.speed,0);
-       nx.widgets["speed"].set({value: settings.speed});
+       controls.updateSlider('speed');
+       //nx.widgets["speed"].set({value: settings.speed});
      // } else if(e.keyCode == 38){ // up arrow
      //   settings.volume +=0.05;
      //   settings.volume = Math.min(1, settings.volume);
@@ -192,16 +206,21 @@ function init(){
        imageCanvas.invert();
      } else if(e.keyCode == 67){ //c key
        imageCanvas.increaseContrast();
+       controls.updateSlider('contrast');
      } else if(e.keyCode == 88){ //x key
        imageCanvas.decreaseContrast();
+       controls.updateSlider('contrast');
      } else if(e.keyCode == 66){//b key
        imageCanvas.brighter();
+       controls.updateSlider('brightness');
      } else if(e.keyCode == 86){ //v key (left of b)
        imageCanvas.darker();
+       controls.updateSlider('brightness');
      } else if(e.keyCode == 72){ //h key
        toggleHowItWorks();
      } else if (e.keyCode == 76) {
-       settings.loopMode=!settings.loopMode;
+       //settings.loopMode=!settings.loopMode;
+       controls.toggleLoop();
      }
   }
 

@@ -16,6 +16,54 @@ select{
 	margin-top: 3px;
 }
 
+.toggle-button{
+  background-color: #757575;
+  border: none;
+  color: black;
+  /* padding: 18px 18px; */
+  /* margin:0 auto; */
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  /* display:block; */
+
+  font: 20px "Verdana","Courier New", Courier, monospace;
+  font-weight: bold;
+  width: 56px;
+  height: 56px;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 56px;
+  height: 25px;
+  position: relative;
+  top: 5px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  background: #757575;
+  outline: none;
+  opacity: 1;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+  transform: rotate(270deg);
+}
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: #DB005B;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: #DB005B;
+  cursor: pointer;
+}
+
 .label{
 	width: 10%; /* 80px */
 	/*height: 20px
@@ -24,11 +72,11 @@ select{
 	font-size: 18px;
 	color: #fff;
 
-	margin-bottom: 3px;
+	margin-bottom: 5px;
   /* margin-left: 75px; */
 		   /* word-wrap: break-word;*/
-  margin-left: auto;
-  margin-left: 50px; /* 50px */
+  /* margin-left: auto; */
+  /* margin-left: 30px; /* 50px */ */
 }
 
 #close-button{
@@ -44,7 +92,7 @@ select{
 
 .small-canvas{
   margin-top: 5px;
-	margin-left: 65px;
+	margin-left: 30px;
   /* margin: auto; */
 }
 .header-label{

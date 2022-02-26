@@ -130,64 +130,19 @@ class Controls {
 		container.className = "container-style";
 	}
 
-	// createImagePanel(container){
-	// 	var panel = document.createElement('div');
-	// 	panel.className = "panel";
-	//   container.appendChild(panel);
-  //
-	//  	this.addDropdown(images, panel, "select image: ", "galactic_xray.jpg", this.selectImage.bind(this));
-	//  	var label = document.createElement("LABEL");
-	//  	label.className= "upload-container";
-	//  	var span = document.createElement("SPAN");
-	//  	span.innerHTML = "...or upload from file";
-  //
-	//  	var x = document.createElement("INPUT");
-	//  	x.setAttribute("type", "file");
-	// 	x.onchange = this.uploadFile.bind(this);
-	//  	label.appendChild(x);
-	//  	label.appendChild(span);
-	//  	panel.appendChild(label);
-	//  	this.addDial("invert", "toggle", panel, this.updateSetting.bind(this), {value: this.settings.invert}, "invert");
-	// 	this.addDial("brightness", "dial", panel, this.updateSetting.bind(this), {value: this.settings.brightness}, "calculatePixels");
-	//   this.addDial("contrast", "dial", panel, this.updateSetting.bind(this), {value: this.settings.contrast}, "calculatePixels");
-	//     //this.addDial("repetitions", "position", panel, this.updateSetting.bind(this), {x: this.settings.repetitions.x, y: this.settings.repetitions.y}, "drawRepetitions");
-	//     //this.addDial("spacing", "position", panel, this.updateSetting.bind(this), {x: this.settings.spacing.x, y: this.settings.spacing.y}, "drawRepetitions");
-	//    	//this.addDial("offset", "position", panel, this.updateSetting.bind(this), {x: this.settings.offset.x, y: this.settings.offset.y}, "drawRepetitions");
-	//   // 	this.addDial("reset", "button", panel, this.invert.bind(this));
-	//    	//this.addDial("clear image", "button", panel, this.imageCanvas.clearImage.bind(this.imageCanvas));
-	//    	//this.addDial("rotation", "dial", panel, this.updateSetting.bind(this), {value: this.settings.rotation}, "drawRepetitions");
-	//   	//this.addDial("clear background", "button", panel, this.updateSetting.bind(this), {}, "clearImage");
-  //
-	//   nx.colorize('#DB005B');
-	// 	nx.colorize("fill", "#757575");
-	//   panelElements.push(panel);
-	// }
-  //
-	// createSoundPanel(container){
-  //   var panel = document.createElement('div');
-	// 	panel.className = "panel";
-	//   container.appendChild(panel);
-	//   this.addDial("play", "toggle", panel, this.togglePlay.bind(this));
-  //   this.addDial("speed", "dial", panel, this.updateSetting.bind(this), {value: this.settings.speed});
-  //   this.addDropdown(scales, panel, "scale: ", this.settings.scale.type, this.selectScale.bind(this));
-  //   this.addDropdown(notes, panel, "start note: ", this.settings.scale.note, this.selectKey.bind(this));
-  //   var octaves = [];
-  //   for(var i = 0; i < 9; i++){
-  //     octaves.push(i);
-  //   }
-  //   this.addDropdown(octaves, panel, "start octave: ", this.settings.scale.octave, this.selectOctave.bind(this));
-  //   this.addDropdown(numNotes, panel, "number of notes: ", this.settings.scale.numSteps, this.selectNum.bind(this));
-  //
-  //   panelElements.push(panel);
-	// }
 
   createSoundImagePanel(containter) {
     var panel = document.createElement('div');
 		panel.className = "panel";
 	  container.appendChild(panel);
-	  this.addDial("play", "toggle", panel, this.togglePlay.bind(this));
-    this.addDial("speed", "slider", panel, this.updateSetting.bind(this), {value: this.settings.speed});
+	  //this.addDial("play", "toggle", panel, this.togglePlay.bind(this));
+    //this.addDial("speed", "slider", panel, this.updateSetting.bind(this), {value: this.settings.speed});
     //this.addDial("volume", "slider", panel, this.updateSetting.bind(this), {value: this.settings.volume});
+
+    this.addToggle("play", panel, this.togglePlay.bind(this),"off");
+    this.addSlider("speed", panel, this.updateSetting2.bind(this), {value: this.settings.speed});
+    this.addToggle("loop", panel, this.toggleLoop.bind(this),"off");
+
     this.addDropdown(scales, panel, "scale: ", this.settings.scale.type, this.selectScale.bind(this));
     this.addDropdown(notes, panel, "start note: ", this.settings.scale.note, this.selectKey.bind(this));
     var octaves = [];
@@ -201,7 +156,7 @@ class Controls {
 	 	var label = document.createElement("LABEL");
 	 	label.className= "upload-container";
 	 	var span = document.createElement("SPAN");
-	 	span.innerHTML = "...or upload from file";
+	 	span.innerHTML = "...or upload an image (jpg/png)";
 
 	 	var x = document.createElement("INPUT");
 	 	x.setAttribute("type", "file");
@@ -209,37 +164,71 @@ class Controls {
 	 	label.appendChild(x);
 	 	label.appendChild(span);
 	 	panel.appendChild(label);
-		this.addDial("brightness", "slider", panel, this.updateSetting.bind(this), {value: this.settings.brightness}, "calculatePixels");
-	  this.addDial("contrast", "slider", panel, this.updateSetting.bind(this), {value: this.settings.contrast}, "calculatePixels");
-    this.addDial("invert", "toggle", panel, this.updateSetting.bind(this), {value: this.settings.invert}, "invert");
+
+    //this.addDial("brightness", "slider", panel, this.updateSetting.bind(this), {value: this.settings.brightness}, "calculatePixels");
+	  //this.addDial("contrast", "slider", panel, this.updateSetting.bind(this), {value: this.settings.contrast}, "calculatePixels");
+    //this.addDial("invert", "toggle", panel, this.updateSetting.bind(this), {value: this.settings.invert}, "invert");
+
+    this.addSlider("brightness", panel, this.updateSetting2.bind(this), {value: this.settings.brightness}, "calculatePixels");
+    this.addSlider("contrast", panel, this.updateSetting2.bind(this), {value: this.settings.brightness}, "calculatePixels");
+    //this.addToggle("invert", panel, this.updateSetting2.bind(this), {value: this.settings.invert}, "invert");
+    //this.addToggle("invert", panel, this.updateSetting.bind(this), {value: this.settings.invert}, "invert");
+    this.addToggle("invert", panel, this.updateSetting2.bind(this),"off","invert");
 
     nx.colorize('#DB005B');
 		nx.colorize("fill", "#757575");
     panelElements.push(panel);
   }
-	// createDrawPanel(container){
-	// 	var panel = document.createElement('div');
-	// 	panel.className = "panel";
-	//   container.appendChild(panel);
-	//   this.addDial("stroke_width", "dial", panel, this.updateSetting.bind(this), {value: this.settings.stroke_width});
-	//   this.addDial("stroke_repetitions", "dial", panel, this.updateSetting.bind(this), {value: this.settings.stroke_repetitions});
-	//  	this.addDial("stroke_opacity", "dial", panel, this.updateSetting.bind(this), {value: this.settings.stroke_opacity});
-  //
-	//   this.addDial("eraser", "toggle", panel, this.updateSetting.bind(this), {value: this.settings.eraser});
-	//   this.addDial("stroke_offset", "position", panel, this.updateSetting.bind(this), {x: this.settings.stroke_offset.x, y: this.settings.stroke_offset.y});
-  //
-	//   this.addDial("clear drawing", "button", panel, this.drawCanvas.clear.bind(this.drawCanvas));
-  //
-	//   	panelElements.push(panel);
-	// }
+
 
 	togglePlay(){
+    var playButton = document.getElementById("play-button");
 		if(this.settings.play){
 			this.handleStop();
+      playButton.innerHTML="off";
+      playButton.style.background = "#757575";
+      playButton.style.color = "black";
 		} else {
 			this.handlePlay();
+      playButton.innerHTML="on";
+      playButton.style.background = "#DB005B";
+      playButton.style.color = "white";
 		}
 	}
+
+  toggleLoop() {
+    var loopButton = document.getElementById("loop-button");
+		if(this.settings.loopMode){
+			//this.handleStop();
+      loopButton.innerHTML="off";
+      loopButton.style.background = "#757575";
+      loopButton.style.color = "black";
+		} else {
+			//this.handlePlay();
+      loopButton.innerHTML="on";
+      loopButton.style.background = "#DB005B";
+      loopButton.style.color = "white";
+		}
+    this.settings.loopMode=!this.settings.loopMode;
+  }
+
+  toggleInvert(){
+    var invertButton = document.getElementById("invert-button");
+    if(this.settings.invert){
+      //this.handleStop();
+      invertButton.innerHTML="off";
+      invertButton.style.background = "#757575";
+      invertButton.style.color = "black";
+    } else {
+      //this.handlePlay();
+      invertButton.innerHTML="on";
+      invertButton.style.background = "#DB005B";
+      invertButton.style.color = "white";
+    }
+    this.settings.invert=!this.settings.invert;
+    // console.log('toggled invert');
+    // console.log(this.settings.invert);
+  }
 
 	toggleDraw(){
 
@@ -262,11 +251,18 @@ class Controls {
 		//console.log(this.settings.pixel_step);
 	}
 
+  updateSlider(label){
 
+    var slider = document.getElementById(label+"-slider");
+    slider.value = 100*this.settings[label];
+    // console.log(label,this.settings[label],slider.value);
+  }
+  //original updateSetting function
 	updateSetting(label, canvasEvent, e){
-		//console.log(label);
-		//console.log(e);
-		//console.log(canvasEvent);
+		// console.log(label);
+		// console.log(e);
+    // console.log(e.value);
+		// console.log(canvasEvent);
 		if('value' in e){
 			//console.log("setting eraser to" + e.value);
 			this.settings[label]= e.value;
@@ -282,6 +278,80 @@ class Controls {
 			fn();
 		}
 	}
+
+  //modified updateSetting function (values are in target, not e, now and invert is hard coded)
+  updateSetting2(label, canvasEvent, e){
+    if (label=='invert'){
+      this.toggleInvert();
+    }
+    else if('value' in e.target){
+      //console.log("setting eraser to" + e.value);
+      this.settings[label]= Math.max(e.target.value/100,0.1);
+      //console.log(this.settings[label]);
+    }
+    if(canvasEvent!=null) {
+      var fn = this.imageCanvas[canvasEvent].bind(this.imageCanvas);
+      fn();
+    }
+  }
+
+  addToggle(label, container, handler,startVal,canvasHandler) {
+    var dialHolder = document.createElement('div');
+		dialHolder.style.padding = "4px";
+		dialHolder.style.display = "inline-block";
+    dialHolder.style.marginLeft = "30px";
+    var testDial = document.createElement('button');
+
+    testDial.className = "toggle-button";
+    // testDial.width = 26;
+    // testDial.height = 26;
+    testDial.innerHTML=startVal;
+    var l = label.replace(/_/g,' ');
+    this.addLabel(l, dialHolder, "label");
+
+    //testDial.setAttribute("nx", type);
+		testDial.setAttribute("label", label);
+		testDial.id = label +"-button";
+
+		container.appendChild(dialHolder);
+
+		dialHolder.appendChild(testDial);
+
+    //testDial.onclick=handler;
+    testDial.onclick=handler.bind(this,label, canvasHandler);
+
+  }
+
+  addSlider(label, container, handler, startVal,canvasHandler){
+    var dialHolder = document.createElement('div');
+		dialHolder.style.padding = "4px";
+		dialHolder.style.display = "inline-block";
+    dialHolder.style.marginLeft = "30px";
+    var testDial = document.createElement('input');
+    testDial.setAttribute("type", "range");
+
+    testDial.className = "slider";
+    testDial.min=0;
+    testDial.max=100;
+    testDial.value=50;
+    // testDial.width = 26;
+    // testDial.height = 26;
+
+    var l = label.replace(/_/g,' ');
+    this.addLabel(l, dialHolder, "label");
+
+    //testDial.setAttribute("nx", type);
+		testDial.setAttribute("label", label);
+		testDial.id = label +"-slider";
+
+		container.appendChild(dialHolder);
+
+		dialHolder.appendChild(testDial);
+
+    //testDial.change = handler.bind(this,label, canvasHandler);
+    // testDial.addEventListener("change", handler.bind(this,label, canvasHandler));
+    testDial.addEventListener("input", handler.bind(this,label, canvasHandler));
+  }
 
 	addDial(label, type, container, handler, startVal, canvasHandler){
 		var dialHolder = document.createElement('div');
