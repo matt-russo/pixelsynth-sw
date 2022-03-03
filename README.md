@@ -14,6 +14,9 @@ Olivia Jack's [PixelSynth](https://ojack.xyz/PIXELSYNTH/), modified for Sonifica
 * button and/or key command to return to default settings?
 
 ### Accessibility
+* change all key commands to alt+someKey (18 + some key)
+* add "aria-label" to control
+* indicate function of buttons with their content?
 * speed control not reliable on some browsers? getting stuck, not able to increase
 * audio feedback for toggles and slider increments?
 * test with screen readers: works in NVDA and Chrome on PC, doesn't work with JAWS, need test with VoiceOver on Mac
@@ -22,6 +25,7 @@ Olivia Jack's [PixelSynth](https://ojack.xyz/PIXELSYNTH/), modified for Sonifica
 * research other requirements
   * ARIA: https://www.deque.com/blog/a11y-support-series-part-1-aria-tab-panel-accessibility/
   * contrast ratio > 4.5:1 for normal text, 3:1 for >18px fontsize (https://webaim.org/resources/contrastchecker/)
+
 
 ### Other/Bugs
 * scanner gets stuck after changing 'number of notes' (need to refresh or change N notes, pause and play again) on Chrome + Windows
@@ -54,16 +58,7 @@ Olivia Jack's [PixelSynth](https://ojack.xyz/PIXELSYNTH/), modified for Sonifica
 * removed stylization on page title (easier for screen readers)
 * added 'how it works' button and accordian panel
 * added alt text to images (same name that appears in drop down list)
-* set up key commands:
-  * p: play/pause
-  * up-down arrows: faster-slower
-  * l: toggle loop mode
-  * i : invert image (would n be better? beside the other commands)
-  * c: increase contrast
-  * x : decrease decrease contrast
-  * b : brighter
-  * v : darker (chose v since it's beside b)
-  * h : open/close 'how it works' box
+* set up key commands
 
 * increasing colour contrasts
   * changed #444 to #757575 to reach minimum colour contrast with white and black

@@ -39,7 +39,6 @@ select{
   height: 25px;
   position: relative;
   top: 5px;
-  left: 5px;
   margin-top: 10px;
   margin-bottom: 20px;
   background: #757575;
@@ -66,18 +65,12 @@ select{
 }
 
 .label{
-	/* width: 10%; /* 80px */
-	/*height: 20px
-	font-weight: bold;*/
 	text-align: center;
 	font-size: 18px;
 	color: #fff;
 
 	margin-bottom: 5px;
-  /* margin-left: 75px; */
-		   /* word-wrap: break-word;*/
-  /* margin-left: auto; */
-  /* margin-left: 30px; /* 50px */ */
+
 }
 
 #close-button{
@@ -147,11 +140,7 @@ select{
 	text-align: center;
 }
 
-.container-style { /*control panel*/
-	width: 30%; /*330px */
-  background:rgba(0, 0, 0, 0.8);
 
-}
 
 .panel{
 	padding: 10px;
@@ -185,7 +174,11 @@ input[type="file"] {
     top: -1000px;
 }
 
-.container-style{
+
+
+.container-style{/*control panel*/
+  width: 30%; /*330px */
+  background:rgba(0, 0, 0, 0.8);
 	top: 1%;
 	position: absolute;
 	right: 0.8%;

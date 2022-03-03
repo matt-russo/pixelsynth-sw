@@ -166,50 +166,90 @@ function init(){
 
    controls.updateSlider('speed'); //to override slider starting at 50%
 
-   document.body.onkeydown = function(e){
-     //console.log(e.keyCode + " pressed");
-     if(e.keyCode == 80){ // p, space bar is e.keyCode == 32 ||
-       controls.togglePlay();
-     } else if(e.keyCode == 39){ // right arrow
-       settings.speed +=0.05;
-       //nx.widgets["speed"].set({value: settings.speed});
-       controls.updateSlider('speed');
-     } else if(e.keyCode == 37){ //left arrow
-       settings.speed -=0.05;
-       settings.speed = Math.max(settings.speed,0);
-       controls.updateSlider('speed');
-       //nx.widgets["speed"].set({value: settings.speed});
-     // } else if(e.keyCode == 38){ // up arrow
-     //   settings.volume +=0.05;
-     //   settings.volume = Math.min(1, settings.volume);
-     //   nx.widgets["volume"].set({value: settings.volume});
-     // } else if(e.keyCode == 40){ //down arrow
-     //   settings.volume -=0.05;
-     //   settings.volume = Math.max(0, settings.volume);
-     //   nx.widgets["volume"].set({value: settings.volume});
-     //
-    } else if(e.keyCode == 73){ // i key
-       imageCanvas.settings.invert = !imageCanvas.settings.invert;
-       imageCanvas.invert();
-     } else if(e.keyCode == 67){ //c key
-       imageCanvas.increaseContrast();
-       controls.updateSlider('contrast');
-     } else if(e.keyCode == 88){ //x key
-       imageCanvas.decreaseContrast();
-       controls.updateSlider('contrast');
-     } else if(e.keyCode == 66){//b key
-       imageCanvas.brighter();
-       controls.updateSlider('brightness');
-     } else if(e.keyCode == 86){ //v key (left of b)
-       imageCanvas.darker();
-       controls.updateSlider('brightness');
-     } else if(e.keyCode == 72){ //h key
-       toggleHowItWorks();
-     } else if (e.keyCode == 76) {
-       //settings.loopMode=!settings.loopMode;
-       controls.toggleLoop();
-     }
-  }
+   var map = {}; // You could also use an array
+   onkeydown = onkeyup = function(e){
+     e = e || event; // to deal with IE
+     map[e.keyCode] = e.type == 'keydown';
+    /* insert conditional here */
+
+    if (map[18] && map[80]) { //p
+      controls.togglePlay();
+    } else if (map[18] && map[39]){ //right arrow
+      settings.speed +=0.05;
+      controls.updateSlider('speed');
+    } else if(map[18] && map[37]){ //left arrow
+      settings.speed -=0.05;
+      settings.speed = Math.max(settings.speed,0);
+      controls.updateSlider('speed');
+   } else if(map[18] && map[73]){ // i key
+      //imageCanvas.settings.invert = !imageCanvas.settings.invert;
+      controls.toggleInvert();
+      imageCanvas.invert();
+    } else if(map[18] && map[67]){ //c key
+      imageCanvas.increaseContrast();
+      controls.updateSlider('contrast');
+    } else if(map[18] && map[88]){ //x key
+      imageCanvas.decreaseContrast();
+      controls.updateSlider('contrast');
+    } else if(map[18] && map[66]){//b key
+      imageCanvas.brighter();
+      controls.updateSlider('brightness');
+    } else if(map[18] && map[86]){ //v key (left of b)
+      imageCanvas.darker();
+      controls.updateSlider('brightness');
+    } else if(map[18] && map[72]){ //h key
+      toggleHowItWorks();
+    } else if (map[18] && map[76]) { //l
+      //settings.loopMode=!settings.loopMode;
+      controls.toggleLoop();
+    }
+
+    }
+
+  //  document.body.onkeydown = function(e){
+  //    //console.log(e.keyCode + " pressed");
+  //    if(e.keyCode == 80){ // p, space bar is e.keyCode == 32 ||
+  //      controls.togglePlay();
+  //    } else if(e.keyCode == 39){ // right arrow
+  //      settings.speed +=0.05;
+  //      //nx.widgets["speed"].set({value: settings.speed});
+  //      controls.updateSlider('speed');
+  //    } else if(e.keyCode == 37){ //left arrow
+  //      settings.speed -=0.05;
+  //      settings.speed = Math.max(settings.speed,0);
+  //      controls.updateSlider('speed');
+  //      //nx.widgets["speed"].set({value: settings.speed});
+  //    // } else if(e.keyCode == 38){ // up arrow
+  //    //   settings.volume +=0.05;
+  //    //   settings.volume = Math.min(1, settings.volume);
+  //    //   nx.widgets["volume"].set({value: settings.volume});
+  //    // } else if(e.keyCode == 40){ //down arrow
+  //    //   settings.volume -=0.05;
+  //    //   settings.volume = Math.max(0, settings.volume);
+  //    //   nx.widgets["volume"].set({value: settings.volume});
+  //    //
+  //   } else if(e.keyCode == 73){ // i key
+  //      imageCanvas.settings.invert = !imageCanvas.settings.invert;
+  //      imageCanvas.invert();
+  //    } else if(e.keyCode == 67){ //c key
+  //      imageCanvas.increaseContrast();
+  //      controls.updateSlider('contrast');
+  //    } else if(e.keyCode == 88){ //x key
+  //      imageCanvas.decreaseContrast();
+  //      controls.updateSlider('contrast');
+  //    } else if(e.keyCode == 66){//b key
+  //      imageCanvas.brighter();
+  //      controls.updateSlider('brightness');
+  //    } else if(e.keyCode == 86){ //v key (left of b)
+  //      imageCanvas.darker();
+  //      controls.updateSlider('brightness');
+  //    } else if(e.keyCode == 72){ //h key
+  //      toggleHowItWorks();
+  //    } else if (e.keyCode == 76) {
+  //      //settings.loopMode=!settings.loopMode;
+  //      controls.toggleLoop();
+  //    }
+  // }
 
 }
 

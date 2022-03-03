@@ -140,19 +140,19 @@ class Controls {
     //this.addDial("volume", "slider", panel, this.updateSetting.bind(this), {value: this.settings.volume});
 
     this.addToggle("play", panel, this.togglePlay.bind(this),"off");
-    this.addSlider("speed", panel, this.updateSetting2.bind(this), {value: this.settings.speed});
     this.addToggle("loop", panel, this.toggleLoop.bind(this),"off");
+    this.addSlider("speed", panel, this.updateSetting2.bind(this), {value: this.settings.speed});
 
-    this.addDropdown(scales, panel, "scale: ", this.settings.scale.type, this.selectScale.bind(this));
-    this.addDropdown(notes, panel, "start note: ", this.settings.scale.note, this.selectKey.bind(this));
+    this.addDropdown(scales, panel, "scale:", this.settings.scale.type, this.selectScale.bind(this));
+    this.addDropdown(notes, panel, "start note:", this.settings.scale.note, this.selectKey.bind(this));
     var octaves = [];
     for(var i = 0; i < 9; i++){
       octaves.push(i);
     }
-    this.addDropdown(octaves, panel, "start octave: ", this.settings.scale.octave, this.selectOctave.bind(this));
-    this.addDropdown(numNotes, panel, "number of notes: ", this.settings.scale.numSteps, this.selectNum.bind(this));
+    this.addDropdown(octaves, panel, "start octave:", this.settings.scale.octave, this.selectOctave.bind(this));
+    this.addDropdown(numNotes, panel, "number of notes:", this.settings.scale.numSteps, this.selectNum.bind(this));
 
-    this.addDropdown(images, panel, "select image: ", "galactic_xray.jpg", this.selectImage.bind(this));
+    this.addDropdown(images, panel, "select image:", "galactic_xray.jpg", this.selectImage.bind(this));
 	 	var label = document.createElement("LABEL");
 	 	label.className= "upload-container";
 	 	var span = document.createElement("SPAN");
@@ -183,10 +183,12 @@ class Controls {
   updateButtonStyle(label,setting){
     var button = document.getElementById(label+"-button");
 		if(setting){
+      // button.innerHTML=label + " on";
       button.innerHTML="on";
       button.style.background = "#DB005B";
       button.style.color = "white";
 		} else {
+      // button.innerHTML=label + " off";
       button.innerHTML="off";
       button.style.background = "#757575";
       button.style.color = "black";
@@ -286,11 +288,13 @@ class Controls {
     // testDial.width = 26;
     // testDial.height = 26;
     testDial.innerHTML=startVal;
+
     var l = label.replace(/_/g,' ');
     this.addLabel(l, dialHolder, "label");
 
     //testDial.setAttribute("nx", type);
 		testDial.setAttribute("label", label);
+    testDial.setAttribute("aria-label",label);
 		testDial.id = label +"-button";
 
 		container.appendChild(dialHolder);
@@ -307,9 +311,10 @@ class Controls {
 		dialHolder.style.padding = "4px";
 		dialHolder.style.display = "inline-block";
     dialHolder.style.marginLeft = "30px";
+    dialHolder.style.textAlign = "center";
+
     var testDial = document.createElement('input');
     testDial.setAttribute("type", "range");
-
     testDial.className = "slider";
     testDial.min=0;
     testDial.max=100;
@@ -322,6 +327,7 @@ class Controls {
 
     //testDial.setAttribute("nx", type);
 		testDial.setAttribute("label", label);
+    testDial.setAttribute("aria-label",label);
 		testDial.id = label +"-slider";
 
 		container.appendChild(dialHolder);
@@ -390,6 +396,8 @@ class Controls {
 	   	}
 	   	dropdown.onchange = handler;
 	   	dropdown.value = value;
+
+      dropdown.setAttribute("aria-label",label.substring(0, label.length-1)); //removing colon
       //dropdown.name = "test";
 	   	this.addLabel(label, container, "header-label");
 	   	container.appendChild(dropdown);
