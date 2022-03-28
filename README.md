@@ -10,13 +10,11 @@ Olivia Jack's [PixelSynth](https://ojack.xyz/PIXELSYNTH/), modified for Sonifica
 * add uploaded file to dropdown and select? (tricky)
 * record audio to mp3 (https://github.com/higuma/web-audio-recorder-js, https://blog.addpipe.com/using-webaudiorecorder-js-to-record-audio-on-your-website/)
 * redesign to maintain image aspect ratio?
-* more compact or responsive control panel so 'close controls' button doesn't get hidden (need better way to align labels with controls)
+* more compact or responsive control panel so 'close controls' button doesn't get hidden (need better way to align labels with controls) (allowed scroll for now)
 * button and/or key command to return to default settings?
 
 ### Accessibility
-* change all key commands to alt+someKey (18 + some key)
-* add "aria-label" to control
-* indicate function of buttons with their content?
+* indicate function of buttons with their content? (trying aria-label instead)
 * speed control not reliable on some browsers? getting stuck, not able to increase
 * audio feedback for toggles and slider increments?
 * test with screen readers: works in NVDA and Chrome on PC, doesn't work with JAWS, need test with VoiceOver on Mac

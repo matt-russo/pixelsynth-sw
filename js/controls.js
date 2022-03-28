@@ -2,6 +2,8 @@ var images=[
 {name: "galactic (xray)", value: "galactic_xray.jpg",altText: "X-ray image of the galactic core taken by the Chandra X-Ray Telescope"},
 {name: "galactic (optical)", value: "galactic_optical.jpg",altText: "Optical image of the galactic core taken by the Hubble Space Telescope"},
 {name: "galactic (infrared)", value: "galactic_ir.jpg",altText: "Infrared image of the galactic core taken by the Spitzer Telescope"},
+{name: "whirlpool (optical)", value: "whirlpool_optical.jpg",altText: "Optical image of the Whirlpool Galaxy (M51) taken by the Hubble Space Telescope"},
+{name: "whirlpool (xray)", value: "whirlpool_xray.jpg",altText: "X-ray image of the Whirlpool Galaxy (M51) taken by the Chandra X-Ray Telescope"},
 // {name: "bar graph", value: "exoplanetDetectionsByYear.jpg"},
 // {name: "scatter plot", value: "trappistLightCurve-single.jpg"},
 // {name: "stacked scatter plots", value: "trappistLightCurves.jpg"},
