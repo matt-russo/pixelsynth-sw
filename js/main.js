@@ -17,8 +17,8 @@ var colPos = 0;
 
 
 var settings = {
-  brightness: 0.5,
-  contrast : 0.5 ,
+  brightness: 0.4,
+  contrast : 0.6 ,
   invert: false,
   // repetitions : {
   //   x: 0,
@@ -48,7 +48,7 @@ var settings = {
     numSteps: 30,
     note: "C",
     octave: 2,
-    type: 'majorPentatonic'
+    type: 'majorHexatonic'
   },
   volume: 0.5, //max gain of single oscillator
   reverb: 0.3, //fraction of volume
@@ -333,6 +333,7 @@ function nextStep(){
       col = 0;
       //trigger sound to indicate right edge
       playSound(audioCtx,startClickBuffer, startClickGain);
+      controls.updateButtonStyle("play",controls.settings.play);
     }
     else{
       while(col>=imageCanvas.canvas.width){

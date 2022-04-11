@@ -1,5 +1,7 @@
 # pixelsynth-sw
-Olivia Jack's [PixelSynth](https://ojack.xyz/PIXELSYNTH/), modified for Sonification World Chat's "Learn" Working Group by [SYSTEM Sounds](https://system-sounds.com)
+Olivia Jack's [PixelSynth](https://ojack.xyz/PIXELSYNTH/), modified for Sonification [Sonification World](https://www.youtube.com/channel/UC_pFRNR2M4_6UA83dBb7nfA) by [SYSTEM Sounds](www.system-sounds.com).
+
+This is a streamlined version designed to be easy to use for classroom activities and accessible to screen readers.
 
 [Live Version](https://matt-russo.github.io/pixelsynth-sw/)
 
@@ -27,7 +29,6 @@ Olivia Jack's [PixelSynth](https://ojack.xyz/PIXELSYNTH/), modified for Sonifica
 
 ### Other/Bugs
 * scanner gets stuck after changing 'number of notes' (need to refresh or change N notes, pause and play again) on Chrome + Windows
-* with NVDA: unlabeled clickable graphic below play, activated with enter key (what is it?)
 * does speedup/down keys work when not playing on all browsers?
 * hearing some crackling artifact:
   * reducing image resolution didn't help
@@ -57,7 +58,6 @@ Olivia Jack's [PixelSynth](https://ojack.xyz/PIXELSYNTH/), modified for Sonifica
 * added 'how it works' button and accordian panel
 * added alt text to images (same name that appears in drop down list)
 * set up key commands
-
 * increasing colour contrasts
   * changed #444 to #757575 to reach minimum colour contrast with white and black
   * changed #FO6 to #DB005B to reach minimum colour contrast with white

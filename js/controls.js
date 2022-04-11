@@ -172,7 +172,7 @@ class Controls {
     //this.addDial("invert", "toggle", panel, this.updateSetting.bind(this), {value: this.settings.invert}, "invert");
 
     this.addSlider("brightness", panel, this.updateSetting2.bind(this), {value: this.settings.brightness}, "calculatePixels");
-    this.addSlider("contrast", panel, this.updateSetting2.bind(this), {value: this.settings.brightness}, "calculatePixels");
+    this.addSlider("contrast", panel, this.updateSetting2.bind(this), {value: this.settings.contrast}, "calculatePixels");
     //this.addToggle("invert", panel, this.updateSetting2.bind(this), {value: this.settings.invert}, "invert");
     //this.addToggle("invert", panel, this.updateSetting.bind(this), {value: this.settings.invert}, "invert");
     this.addToggle("invert", panel, this.updateSetting2.bind(this),"off","invert");
@@ -321,6 +321,7 @@ class Controls {
     testDial.min=0;
     testDial.max=100;
     testDial.value=50;
+    testDial.value=100*startVal['value'];
     // testDial.width = 26;
     // testDial.height = 26;
 
