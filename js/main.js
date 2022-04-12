@@ -51,7 +51,7 @@ var settings = {
     type: 'majorHexatonic'
   },
   volume: 0.5, //max gain of single oscillator
-  reverb: 0.3, //fraction of volume
+  reverb: 0.25, //fraction of volume
   startClick: 0.3, //fraction of volume
   loop:false
 };
